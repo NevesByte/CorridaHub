@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Corrida Hub</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../geral.css">
+  <link rel="stylesheet" href="publicarCorrida.css">
+</head>
+
+<body>
+
+<header>
+    <img src="../img/CORRIDA.png" alt="Logo do Corrida Hub" class="menu-icon">
+  <h1>Corrida Hub</h1>
+  <nav>
+    <ul>
+      <li><a href="#">Sobre</a></li>
+      <li><a href="#">Corridas</a></li>
+      <li><a href="#">Histórico</a></li>
+    </ul>
+  </nav>
+</header>
+<main class="form-container">
+    
+  <form class="form">
+    <p class="info">
+    Todas as informações enviadas passarão por uma análise da nossa equipe.
+    Em caso de dúvidas, entraremos em contato com você para verificar os dados,
+    garantir a segurança da plataforma e entender melhor o evento.
+    Após a aprovação, você será notificado sobre a publicação.
+    </p>
+    <h2>Publicar Corrida</h2>
+    <p class="sub">Preencha as informações do evento</p>
+
+    <div class="grid">
+        <div class="campo">
+  <label>Email para contato</label>
+  <input type="email" placeholder="seuemail@gmail.com" required>
+</div>
+
+<div class="campo">
+  <label>Telefone / WhatsApp</label>
+  <input type="tel" placeholder="(15) 99999-9999">
+</div>
+      <div class="campo">
+        <label>Nome do evento</label>
+        <input type="text" placeholder="Ex: Corrida da Cidade" required>
+      </div>
+
+      <div class="campo">
+        <label>Região de Itapetininga</label>
+        <input type="text" placeholder="Ex: Centro, Vila Rio Branco" required>
+      </div>
+
+      <div class="campo">
+        <label>Data do evento</label>
+        <input type="date" required>
+      </div>
+
+      <div class="campo">
+        <label>Tipo de corrida</label>
+        <select required>
+          <option>Corridas de rua</option>
+          <option>Corridas de campo</option>
+          <option>Corridas de trilha</option>
+          <option>Corridas de escada</option>
+          <option>Corridas cross country</option>
+        </select>
+      </div>
+
+      <div class="campo">
+        <label>Categoria de Corredores</label>
+        <select required>
+          <option>Masculino</option>
+          <option>Feminino</option>
+          <option>Vovôs e Vovós</option>
+          <option>Jovens</option>
+          <option>Crianças</option>
+          <option>Veteranos</option>
+          <option>Iniciantes</option>
+          <option>Todos</option>
+        </select>
+      </div>
+
+      <div class="campo">
+        <label>Premiação</label>
+        <select required>
+          <option>Sem premiação</option>
+          <option>Com premiação (Monetizado ou não)</option>
+          <option>Premiação em dinheiro</option>
+        </select>
+      </div>
+
+      <!-- CAMPO DE IMAGEM -->
+      <div class="campo full">
+        <label>Imagem do evento</label>
+
+        <label class="upload">
+          <input type="file" accept="image/*" required>
+          <span>📷 Clique para enviar uma imagem</span>
+        </label>
+
+      </div>
+
+    </div>
+
+    <button type="submit" class="btn">Publicar Evento</button>
+  </form>
+
+</main>
+<footer>
+  <div>
+    <h2>Corrida Hub</h2>
+    <p>© 2026 Todos os direitos reservados</p>
+  </div>
+
+  <div>
+    <h3>Navegação</h3>
+    <ul>
+      <li>Início</li>
+      <li>Corridas</li>
+      <li>Sobre</li>
+      <li>Contato</li>
+    </ul>
+  </div>
+
+  <div>
+    <h3>Contato</h3>
+    <address>Itapetininga</address>
+    <a href="#">ifsp@gmail.com</a>
+  </div>
+
+  <div>
+    <h3>Desenvolvedores</h3>
+    <a href="#">LinkedIn / Victor</a>
+    <a href="#">Thomas</a>
+  </div>
+</footer>
+<!-- VLibras Plugin -->
+<div vw class="enabled">
+  <div vw-access-button class="active"></div>
+  <div vw-plugin-wrapper>
+    <div class="vw-plugin-top-wrapper"></div>
+  </div>
+</div>
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>
+  new window.VLibras.Widget('https://vlibras.gov.br/app');
+</script>
+</body>
+</html>

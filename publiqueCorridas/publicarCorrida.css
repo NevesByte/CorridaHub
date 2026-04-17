@@ -1,0 +1,129 @@
+
+/* CONTAINER */
+.form-container{
+  padding: 60px 40px;
+  display: flex;
+  justify-content: center;
+  background: var(--gray);
+}
+
+/* FORM CARD */
+.form{
+  background: var(--secondary);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+  max-width: 900px;
+  width: 100%;
+  text-align: center;
+}
+
+.form h2{
+  margin-bottom: 10px;
+  color: var(--primary);
+}
+
+.sub{
+  font-size: 0.9em;
+  opacity: 0.7;
+  margin-bottom: 30px;
+}
+
+/* GRID */
+.grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+  gap: 20px;
+  text-align: left;
+}
+
+.full{
+  grid-column: 1 / -1;
+}
+
+/* CAMPOS */
+.campo{
+  display: flex;
+  flex-direction: column;
+}
+
+.campo label{
+  margin-bottom: 5px;
+  font-weight: 500;
+  color: var(--primary);
+  font-size: 0.9em;
+}
+
+.campo input,
+.campo select{
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  outline: none;
+  transition: 0.3s;
+  background: var(--gray);
+  font-family: 'Poppins', sans-serif;
+}
+
+.campo input::placeholder{
+  color: #999;
+}
+
+.campo input:focus,
+.campo select:focus{
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(255,107,0,0.2);
+}
+
+/* UPLOAD CUSTOM */
+.upload{
+  border: 2px dashed #ccc;
+  border-radius: 15px;
+  padding: 30px;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.3s;
+  color: #777;
+  background: var(--gray);
+}
+
+.upload:hover{
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(255,107,0,0.05);
+}
+
+.upload input{
+  display: none;
+}
+
+/* BOTÃO */
+.btn{
+  margin-top: 30px;
+  padding: 14px 25px;
+  border: none;
+  border-radius: 30px;
+  background: var(--accent);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255,107,0,0.3);
+}
+
+/* INFO BOX */
+.info{
+  background: rgba(255,107,0,0.08);
+  border-left: 4px solid var(--accent);
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 0.9em;
+  margin-bottom: 25px;
+  text-align: left;
+  line-height: 1.5;
+  color: var(--primary);
+}
