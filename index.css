@@ -13,7 +13,8 @@ body{
 
 /* HERO */
 .hero{
-  background:linear-gradient(rgba(10,37,64,0.9), rgba(10,37,64,0.9)), url('img/CORRIDA.png');
+  margin-top: 80px;
+  background:linear-gradient(rgba(10, 37, 64, 0.548), rgba(10, 37, 64, 0.703)), url('img/corrida3.jpg');
   background-size:cover;
   background-position:center;
   color:var(--secondary);
@@ -150,6 +151,9 @@ body{
 
 /* RESPONSIVO */
 @media (max-width:768px){
+  .hero{
+    margin-top: 0px;
+  }
   .hero h2{
     font-size:2em;
   }
