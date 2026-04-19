@@ -22,6 +22,10 @@
       <li><a href="../index.html">Sobre</a></li>
       <li><a href="../corridasHub/hub.html">Hub de Corridas</a></li>
       <li><a href="#">Publique sua corrida</a></li>
+      <li><a href="../historia/historia.html">História</a></li>
+      <li><a href="../pesquisa/pesquisa.html">Pesquisa</a></li>
+      <li><a href="../apoiadores/apoiadores.html">Apoiadores</a></li>
+      <li><a href="../programas/programas.html">Programas</a></li>
     </ul>
   </nav>
   <span class="material-symbols-outlined menu-toggle">
@@ -30,7 +34,7 @@
 </header>
 <main class="form-container">
     
-  <form class="form">
+  <form class="form" method="post" action="http://localhost:3000/anuncios">
     <p class="info">
     Todas as informações enviadas passarão por uma análise da nossa equipe.
     Em caso de dúvidas, entraremos em contato com você para verificar os dados,
@@ -42,32 +46,36 @@
 
     <div class="grid">
         <div class="campo">
-  <label>Email para contato</label>
-  <input type="email" placeholder="seuemail@gmail.com" required>
+  <label id="iemail">Email para contato</label>
+  <input type="email" name="email" id="iemail" placeholder="seuemail@gmail.com" required>
 </div>
 
 <div class="campo">
-  <label>Telefone / WhatsApp</label>
-  <input type="tel" placeholder="(15) 99999-9999">
+  <label id="iphone">Telefone / WhatsApp</label>
+  <input type="tel" name="phone" id="iphone" placeholder="(15) 99999-9999">
 </div>
       <div class="campo">
-        <label>Nome do evento</label>
-        <input type="text" placeholder="Ex: Corrida da Cidade" required>
+        <label id="inomeAnunciante">Nome do anunciante</label>
+        <input name="nomeAnunciante" id="inomeAnunciante" type="text" placeholder="Ex: Corrida da Cidade" required>
+      </div>
+      <div class="campo">
+        <label id="inomeEvento">Nome do evento</label>
+        <input name="nomeEvento" id="inomeEvento" type="text" placeholder="Ex: Corrida da Cidade" required>
       </div>
 
       <div class="campo">
-        <label>Região de Itapetininga</label>
-        <input type="text" placeholder="Ex: Centro, Vila Rio Branco" required>
+        <label id="iregiao">Região de Itapetininga</label>
+        <input name="regiao" id="iregiao" type="text" placeholder="Ex: Centro, Vila Rio Branco" required>
       </div>
 
       <div class="campo">
-        <label>Data do evento</label>
-        <input type="date" required>
+        <label id="idataevento">Data do evento</label>
+        <input name="dataevento" id="idataevento" type="date" required>
       </div>
 
       <div class="campo">
-        <label>Tipo de corrida</label>
-        <select required>
+        <label id="itipoCorrida">Tipo de corrida</label>
+        <select name="tipoCorrida" id="itipoCorrida" required>
           <option>Corridas de rua</option>
           <option>Corridas de campo</option>
           <option>Corridas de trilha</option>
@@ -77,8 +85,8 @@
       </div>
 
       <div class="campo">
-        <label>Categoria de Corredores</label>
-        <select required>
+        <label id="icategoriaCorredores">Categoria de Corredores</label>
+        <select name="categoriaCorredores" id="icategoriaCorredores" required>
           <option>Masculino</option>
           <option>Feminino</option>
           <option>Vovôs e Vovós</option>
@@ -91,8 +99,8 @@
       </div>
 
       <div class="campo">
-        <label>Premiação</label>
-        <select required>
+        <label id="ipremiacao">Premiação</label>
+        <select name="premiacao" id="ipremiacao" required>
           <option>Sem premiação</option>
           <option>Com premiação (Monetizado ou não)</option>
           <option>Premiação em dinheiro</option>
@@ -103,10 +111,12 @@
       <div class="campo full">
         <label>Imagem do evento</label>
 
+        <!--
         <label class="upload">
-          <input type="file" accept="image/*" required>
+          <input type="file" accept="image/*">
           <span>📷 Clique para enviar uma imagem</span>
         </label>
+        -->
 
       </div>
 
@@ -128,6 +138,10 @@
       <li><a href="../index.html">Sobre</a></li>
       <li><a href="../corridasHub/hub.html">Hub de Corridas</a></li>
       <li><a href="#">Publique sua corrida</a></li>
+      <li><a href="../historia/historia.html">História</a></li>
+      <li><a href="../pesquisa/pesquisa.html">Pesquisa</a></li>
+      <li><a href="../apoiadores/apoiadores.html">Apoiadores</a></li>
+      <li><a href="../programas/programas.html">Programas</a></li>
     </ul>
   </div>
 
