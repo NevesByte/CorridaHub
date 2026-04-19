@@ -1,0 +1,242 @@
+@import 'variables';
+
+.busca-corridas-container {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  padding: 50px 40px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.busca-corridas-container h2 {
+  color: var(--primary);
+  font-size: 1.8em;
+}
+
+.busca-corridas {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 30px;
+}
+
+.form {
+  background: var(--secondary);
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  height: fit-content;
+}
+
+.form h3 {
+  color: var(--primary);
+  margin-bottom: 5px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.campo label {
+  font-weight: 500;
+  font-size: 0.85em;
+  color: var(--primary);
+}
+
+.campo input,
+.campo select {
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  outline: none;
+  transition: 0.3s;
+  background: var(--gray);
+}
+
+.campo input::placeholder {
+  color: #999;
+}
+
+.campo input:focus,
+.campo select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(255, 107, 0, 0.2);
+}
+
+.btn-buscar {
+  margin-top: 20px;
+  background: linear-gradient(135deg, var(--accent) 0%, #ff8c00 100%);
+  color: white;
+  border: none;
+  padding: 16px 32px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 107, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.btn-buscar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn-buscar:hover::before {
+  left: 100%;
+}
+
+.btn-buscar:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(255, 107, 0, 0.4);
+  background: linear-gradient(135deg, #ff8c00 0%, var(--accent) 100%);
+}
+
+.btn-buscar:active {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 10px rgba(255, 107, 0, 0.3);
+}
+
+.btn-buscar::after {
+  content: '🔍';
+  font-size: 1.2em;
+}
+
+.resultados {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 320px));
+  gap: 20px;
+  justify-content: center;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  height: 500px;
+  padding: 25px;
+  box-sizing: border-box;
+  overflow-y: scroll;
+  background-color: var(--gray);
+}
+
+.card {
+  width: 100%;
+  max-width: 320px;
+  height: 420px;
+  background: var(--secondary);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  transition: 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+.card-image {
+  position: relative;
+  height: 160px;
+  overflow: hidden;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 0.4s;
+}
+
+.card:hover .card-image img {
+  transform: scale(1.08);
+}
+
+.tag {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(255, 107, 0, 0.95);
+  color: white;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.card-status {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.92);
+  color: #222;
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-size: 0.8em;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.card-status::before {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #24b34a;
+}
+
+.card-status.realizada::before {
+  background: #e94e4e;
+}
+
+.card-status.agendada::before {
+  background: #24b34a;
+}
+
+.card-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+}
+
+.card-content h2 {
+  font-size: 18px;
+  color: var(--primary);
+}
+
+.card-content p {
+  font-size: 14px;
+  color: #555;
+}
+
+.card-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: #777;
+}

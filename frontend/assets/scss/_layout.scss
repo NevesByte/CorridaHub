@@ -1,0 +1,165 @@
+header {
+  background: var(--primary);
+  color: var(--secondary);
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10000;
+}
+
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--secondary);
+  text-decoration: none;
+}
+
+.header-brand h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: var(--secondary);
+  letter-spacing: 0.3px;
+}
+
+.header-brand img {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+}
+
+.menu-toggle {
+  display: none;
+}
+
+nav ul {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav a {
+  color: var(--secondary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: var(--transition-fast);
+}
+
+nav a:hover {
+  color: var(--accent);
+}
+
+.menu-icon {
+  display: block;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  margin-right: 15px;
+}
+
+nav ul.active {
+  display: flex;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+@media(max-width: 768px) {
+  main {
+    margin-top: 0;
+  }
+
+  header {
+    position: relative;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  nav ul {
+    display: none;
+    flex-direction: column;
+    background-color: var(--gray);
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 250px;
+    margin: 0;
+    padding: 60px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.75);
+    z-index: 1000;
+  }
+
+  nav > ul > li {
+    border-bottom: 2px solid var(--accent);
+    padding: 15px 0;
+  }
+
+  nav > ul > li > a {
+    color: var(--primary);
+  }
+
+  nav ul.active {
+    display: flex;
+  }
+}
+
+footer {
+  background-color: var(--primary);
+  color: var(--secondary);
+  padding: 40px 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+}
+
+footer h2,
+footer h3 {
+  margin-bottom: 10px;
+}
+
+footer ul {
+  list-style: none;
+}
+
+footer ul li {
+  margin-bottom: 6px;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+footer ul li:hover {
+  color: var(--accent);
+}
+
+footer a {
+  display: block;
+  text-decoration: none;
+  color: var(--secondary);
+  margin-bottom: 6px;
+  transition: var(--transition-fast);
+}
+
+footer a:hover {
+  color: var(--accent);
+}
+
+footer address {
+  font-style: normal;
+  margin-bottom: 10px;
+}
+
+footer > div:first-child {
+  grid-column: 1 / -1;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  padding-bottom: 15px;
+}
