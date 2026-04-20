@@ -24,6 +24,19 @@
   .busca-corridas {
     grid-template-columns: 1fr;
   }
+
+  .form {
+    max-height: 70vh;
+    overflow-y: auto;
+    padding-bottom: 140px; /* espaÃ§o para o botÃ£o fixo */
+    position: relative;
+  }
+
+  .btn-wrapper {
+    position: sticky;
+    bottom: 10px;
+    z-index: 2;
+  }
 }
 
 .form {

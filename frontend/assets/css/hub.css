@@ -325,10 +325,20 @@
 
   .form{
     order: 1;
+    max-height: 70vh;
+    overflow-y: auto;
+    padding-bottom: 140px; /* espaÃ§o para o botÃ£o fixo */
+    position: relative;
   }
 
   .resultados{
     order: 2;
+  }
+
+  .btn-wrapper {
+    position: sticky;
+    bottom: 10px;
+    z-index: 2;
   }
 
 }
