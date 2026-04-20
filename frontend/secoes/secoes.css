@@ -71,10 +71,6 @@ img {
   .apoiadores-grid {
     grid-template-columns: 1fr;
   }
-
-  .images-aside{
-    display: none;
-  }
 }
 
 /* Estilos para Programas */
@@ -265,10 +261,6 @@ img {
   gap: 20px;
 }
 
-.content-card.image-left {
-  flex-direction: row;
-}
-
 .content-card .card-content {
   flex: 1;
 }
@@ -378,6 +370,8 @@ img {
 }
 
 @media(max-width: 768px) {
+  
+
   .timeline-section {
     padding: 30px 20px;
   }
