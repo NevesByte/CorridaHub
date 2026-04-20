@@ -71,6 +71,10 @@ img {
   .apoiadores-grid {
     grid-template-columns: 1fr;
   }
+
+  .images-aside{
+    display: none;
+  }
 }
 
 /* Estilos para Programas */
