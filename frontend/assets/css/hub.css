@@ -20,6 +20,12 @@
   gap: 30px;
 }
 
+@media (max-width: 768px) {
+  .busca-corridas {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ================= FORM ================= */
 
 .form{
