@@ -1,0 +1,388 @@
+/* Estilos globais para imagens */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Estilos para Apoiadores */
+.apoiadores-section {
+  padding: 50px 40px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.apoiadores-section h2 {
+  color: var(--primary);
+  font-size: 2em;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.apoiadores-section p {
+  font-size: 1.1em;
+  line-height: 1.6;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.apoiadores-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.apoio-card {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.apoio-card:hover {
+  transform: translateY(-5px);
+}
+
+.apoio-card img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+
+.apoio-card h3 {
+  color: var(--primary);
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.apoio-card p {
+  color: #555;
+  line-height: 1.5;
+}
+
+@media(max-width: 768px) {
+  .apoiadores-section {
+    padding: 30px 20px;
+  }
+
+  .apoiadores-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Estilos para Programas */
+.programas-section {
+  padding: 50px 40px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.programas-section h2 {
+  color: var(--primary);
+  font-size: 2em;
+  margin-bottom: 30px;
+}
+
+.programas-section h3 {
+  color: var(--primary);
+  font-size: 1.5em;
+  margin-bottom: 20px;
+}
+
+.programas-section h4 {
+  color: var(--primary);
+  font-size: 1.2em;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.programas-section p {
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.programas-section ul {
+  margin-left: 20px;
+  margin-bottom: 15px;
+}
+
+.programas-section li {
+  margin-bottom: 5px;
+  line-height: 1.5;
+}
+
+.programa-principal {
+  background: white;
+  padding: 30px;
+  margin-bottom: 40px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  border-left: 4px solid var(--accent);
+}
+
+.outros-programas {
+  margin-top: 40px;
+}
+
+.programa-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.programa-card {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.programa-card:hover {
+  transform: translateY(-5px);
+}
+
+.programa-card h4 {
+  color: var(--primary);
+  margin-bottom: 10px;
+}
+
+.programa-card p {
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.programa-card ul {
+  margin-left: 15px;
+}
+
+.programa-card li {
+  font-size: 0.9em;
+  color: #666;
+}
+
+@media(max-width: 768px) {
+  .programas-section {
+    padding: 30px 20px;
+  }
+
+  .programa-principal {
+    padding: 20px;
+  }
+
+  .programa-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Estilos para Pesquisa */
+.pesquisa-section {
+  padding: 50px 40px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.pesquisa-section h2 {
+  color: var(--primary);
+  font-size: 2em;
+  margin-bottom: 30px;
+}
+
+.pesquisa-section article {
+  background: white;
+  padding: 30px;
+  margin-bottom: 30px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  border-left: 4px solid var(--accent);
+}
+
+.pesquisa-section article h3 {
+  color: var(--primary);
+  margin-bottom: 15px;
+  font-size: 1.5em;
+}
+
+.pesquisa-section article h4 {
+  color: var(--primary);
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: 1.2em;
+}
+
+.pesquisa-section article p {
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.pesquisa-section article ul {
+  margin-left: 20px;
+  margin-bottom: 15px;
+}
+
+.pesquisa-section article li {
+  margin-bottom: 5px;
+  line-height: 1.5;
+}
+
+.pesquisa-section article em {
+  font-style: italic;
+  color: #777;
+}
+
+@media(max-width: 1024px) {
+  .pesquisa-section {
+    padding: 30px 20px;
+  }
+
+  .pesquisa-section article {
+    padding: 20px;
+  }
+
+  .content-card.image-left {
+    flex-direction: column;
+  }
+
+  .content-card.image-left .card-image,
+  .content-card.image-left .card-content {
+    width: 100%;
+  }
+}
+
+/* Cards com imagens */
+.content-card {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.content-card.image-left {
+  flex-direction: row;
+}
+
+.content-card .card-content {
+  flex: 1;
+}
+
+.content-card .card-image {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  justify-content: center;
+  align-items: center;
+}
+
+.content-card .card-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.image-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.image-stack img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Estilos para História */
+.timeline-section {
+  padding: 50px 40px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.timeline-section h2 {
+  color: var(--primary);
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.timeline-section p {
+  font-size: 1.1em;
+  line-height: 1.6;
+  margin-bottom: 40px;
+}
+
+.timeline {
+  position: relative;
+  padding-left: 30px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 15px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--accent);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 40px;
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.6s ease;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -22px;
+  top: 10px;
+  width: 12px;
+  height: 12px;
+  background: var(--accent);
+  border-radius: 50%;
+  border: 3px solid white;
+  box-shadow: 0 0 0 2px var(--accent);
+}
+
+.timeline-content {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  border-left: 4px solid var(--accent);
+}
+
+.timeline-content h3 {
+  color: var(--primary);
+  margin-bottom: 10px;
+  font-size: 1.3em;
+}
+
+.timeline-content p {
+  color: #555;
+  line-height: 1.6;
+}
+
+@media(max-width: 768px) {
+  .timeline-section {
+    padding: 30px 20px;
+  }
+
+  .timeline {
+    padding-left: 20px;
+  }
+
+  .timeline-item::before {
+    left: -17px;
+  }
+}
