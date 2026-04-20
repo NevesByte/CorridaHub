@@ -6,6 +6,20 @@ localStorage.clear();
 const STORAGE_KEY = "corridas";
 
 // ===============================
+// IMAGENS (URLS)
+// ===============================
+const IMG_CIRCUITO = "https://www.itapetininga.sp.gov.br/admin/globalarq/noticia/noticia/651_366/16d36b7d050fd0d7d348953e45a27a2c.jpeg";
+const IMG_60 = "https://www.itapetininga.sp.gov.br/public/admin/globalarq/noticia/noticia/651_366/7bc0a7f950b44b9a03684077ff733997.jpeg";
+const IMG_KIDS = "https://itapetininga.sp.gov.br/admin/globalarq/noticia/noticia/651_366/658a7429da395b4d7beb22f7ac1741ba.jpeg";
+const IMG_KAZAMIGAS = "https://www.itapetininga.sp.gov.br/admin/globalarq/noticia/noticia/651_366/c9b7fdd24c09ce7f2775f4c9f291a402.jpeg";
+const IMG_SEXTA = IMG_CIRCUITO;
+const IMG_ANSPAZ = "https://www.itapetininga.sp.gov.br/admin/globalarq/noticia/noticia/651_366/8c4c582548b2c11e7a614a433f78658a.jpeg";
+const IMG_DAGRO = "https://www.itapetininga.sp.gov.br/admin/globalarq/noticia/noticia/651_366/62216d2d62e48e15be0a483ca280d7eb.jpeg";
+const IMG_POLICIA_PENAL = "https://www.itapetininga.sp.gov.br/admin/globalarq/noticia/noticia/651_366/fe062267ef8cd2e366babff0781a5099.jpeg";
+const IMG_FRANCIOSI = "https://d2hk32cswy6zx7.cloudfront.net/34444422e6fe8a34498efad78ecebec2/v2_745f3a89-fb17-4ab0-a24b-02da2e25be08.jpg";
+const IMG_XV = "https://www.itapetininga.sp.gov.br/admin/globalarq/noticia/noticia/651_366/2484b2076fe874b1f8b0c1ffef48185f.jpeg";
+
+// ===============================
 // FUNÇÃO PARA VERIFICAR STATUS DA CORRIDA
 // ===============================
 function getStatusCorrida(dataCorrida) {
@@ -30,6 +44,7 @@ const corridasPadrao = [
     descricao: "Primeira etapa do circuito oficial da Prefeitura de Itapetininga.",
     organizadores: "Prefeitura Municipal de Itapetininga, Secretaria de Esporte, Lazer e Juventude",
     apoiadores: "Guarda Civil Municipal, SAMU, Secretaria de Trânsito e Cidadania, Fundo Social de Solidariedade",
+    imagem: IMG_CIRCUITO,
     cronometrista: "Tiago Serafim"
   },
   {
@@ -44,6 +59,7 @@ const corridasPadrao = [
     descricao: "Segunda etapa do circuito oficial.",
     organizadores: "Prefeitura Municipal de Itapetininga, Secretaria de Esporte, Lazer e Juventude",
     apoiadores: "Guarda Civil Municipal, SAMU, Secretaria de Trânsito e Cidadania, Fundo Social de Solidariedade",
+    imagem: IMG_CIRCUITO,
     cronometrista: "Tiago Serafim"
   },
   {
@@ -58,6 +74,7 @@ const corridasPadrao = [
     descricao: "Terceira etapa do circuito oficial (data a confirmar).",
     organizadores: "Prefeitura Municipal de Itapetininga, Secretaria de Esporte, Lazer e Juventude",
     apoiadores: "Guarda Civil Municipal, SAMU, Secretaria de Trânsito e Cidadania, Fundo Social de Solidariedade",
+    imagem: IMG_CIRCUITO,
     cronometrista: "Tiago Serafim"
   },
   {
@@ -72,6 +89,7 @@ const corridasPadrao = [
     descricao: "Quarta etapa do circuito oficial.",
     organizadores: "Prefeitura Municipal de Itapetininga, Secretaria de Esporte, Lazer e Juventude",
     apoiadores: "Guarda Civil Municipal, SAMU, Secretaria de Trânsito e Cidadania, Fundo Social de Solidariedade",
+    imagem: IMG_CIRCUITO,
     cronometrista: "Tiago Serafim"
   },
   {
@@ -86,6 +104,7 @@ const corridasPadrao = [
     descricao: "Quinta etapa do circuito oficial.",
     organizadores: "Prefeitura Municipal de Itapetininga, Secretaria de Esporte, Lazer e Juventude",
     apoiadores: "Guarda Civil Municipal, SAMU, Secretaria de Trânsito e Cidadania, Fundo Social de Solidariedade",
+    imagem: IMG_CIRCUITO,
     cronometrista: "Tiago Serafim"
   },
   {
@@ -100,6 +119,7 @@ const corridasPadrao = [
     descricao: "Sexta e última etapa do circuito oficial.",
     organizadores: "Prefeitura Municipal de Itapetininga, Secretaria de Esporte, Lazer e Juventude",
     apoiadores: "Guarda Civil Municipal, SAMU, Secretaria de Trânsito e Cidadania, Fundo Social de Solidariedade",
+    imagem: IMG_CIRCUITO,
     cronometrista: "Tiago Serafim"
   },
   {
@@ -114,6 +134,7 @@ const corridasPadrao = [
     descricao: "Corrida especial para participantes acima de 60 anos.",
     organizadores: "Prefeitura Municipal de Itapetininga, Secretaria de Esporte, Lazer e Juventude",
     apoiadores: "SAMU, Fundo Social de Solidariedade",
+    imagem: IMG_60,
     cronometrista: "Tiago Serafim",
     destaques: []
   },
@@ -129,6 +150,7 @@ const corridasPadrao = [
     descricao: "Segunda etapa para idosos.",
     organizadores: "Prefeitura Municipal de Itapetininga, Secretaria de Esporte, Lazer e Juventude",
     apoiadores: "SAMU, Fundo Social de Solidariedade",
+    imagem: IMG_60,
     cronometrista: "Tiago Serafim",
     destaques: []
   },
@@ -144,6 +166,7 @@ const corridasPadrao = [
     descricao: "Corrida para crianças com percurso adequado.",
     organizadores: "Prefeitura Municipal de Itapetininga, Secretaria de Esporte, Lazer e Juventude",
     apoiadores: "SAMU, Fundo Social de Solidariedade",
+    imagem: IMG_KIDS,
     cronometrista: "Tiago Serafim",
     destaques: []
   },
@@ -159,6 +182,7 @@ const corridasPadrao = [
     descricao: "Segunda etapa para crianças.",
     organizadores: "Prefeitura Municipal de Itapetininga, Secretaria de Esporte, Lazer e Juventude",
     apoiadores: "SAMU, Fundo Social de Solidariedade",
+    imagem: IMG_KIDS,
     cronometrista: "Tiago Serafim",
     destaques: []
   },
@@ -174,6 +198,7 @@ const corridasPadrao = [
     descricao: "Terceira etapa para crianças.",
     organizadores: "Prefeitura Municipal de Itapetininga, Secretaria de Esporte, Lazer e Juventude",
     apoiadores: "SAMU, Fundo Social de Solidariedade",
+    imagem: IMG_KIDS,
     cronometrista: "Tiago Serafim",
     destaques: []
   },
@@ -189,6 +214,7 @@ const corridasPadrao = [
     descricao: "Quarta etapa para crianças.",
     organizadores: "Prefeitura Municipal de Itapetininga, Secretaria de Esporte, Lazer e Juventude",
     apoiadores: "SAMU, Fundo Social de Solidariedade",
+    imagem: IMG_KIDS,
     cronometrista: "Tiago Serafim",
     destaques: []
   },
@@ -204,6 +230,7 @@ const corridasPadrao = [
     descricao: "Corrida em parceria com Kazamigas e Raveli.",
     organizadores: "Kazamigas, Raveli",
     apoiadores: "Prefeitura Municipal de Itapetininga",
+    imagem: IMG_KAZAMIGAS,
     cronometrista: "Tiago Serafim",
     destaques: []
   },
@@ -219,6 +246,7 @@ const corridasPadrao = [
     descricao: "Evento noturno 'Sexta é Nois'.",
     organizadores: "Grupos locais",
     apoiadores: "Prefeitura Municipal de Itapetininga",
+    imagem: IMG_SEXTA,
     cronometrista: "Tiago Serafim",
     destaques: []
   },
@@ -234,6 +262,7 @@ const corridasPadrao = [
     descricao: "Corrida em parceria com Anspaz e Padre Someti.",
     organizadores: "Anspaz, Padre Someti",
     apoiadores: "Prefeitura Municipal de Itapetininga",
+    imagem: IMG_ANSPAZ,
     cronometrista: "Tiago Serafim",
     destaques: []
   },
@@ -249,6 +278,7 @@ const corridasPadrao = [
     descricao: "Corrida comemorativa de aniversário D' Agro.",
     organizadores: "D' Agro",
     apoiadores: "Prefeitura Municipal de Itapetininga",
+    imagem: IMG_DAGRO,
     cronometrista: "Tiago Serafim",
     destaques: []
   },
@@ -264,6 +294,7 @@ const corridasPadrao = [
     descricao: "Corrida em parceria com Polícia Penal.",
     organizadores: "Polícia Penal",
     apoiadores: "Prefeitura Municipal de Itapetininga",
+    imagem: IMG_POLICIA_PENAL,
     cronometrista: "Tiago Serafim",
     destaques: []
   },
@@ -279,6 +310,7 @@ const corridasPadrao = [
     descricao: "Corrida Franciosi.",
     organizadores: "Franciosi",
     apoiadores: "Prefeitura Municipal de Itapetininga",
+    imagem: IMG_FRANCIOSI,
     cronometrista: "Tiago Serafim",
     destaques: []
   },
@@ -294,6 +326,7 @@ const corridasPadrao = [
     descricao: "Corrida comemorativa do XV de Novembro.",
     organizadores: "EC XV de Novembro",
     apoiadores: "Prefeitura Municipal de Itapetininga",
+    imagem: IMG_XV,
     cronometrista: "Tiago Serafim",
     destaques: [
       { categoria: "Masculino 19-29", primeiro: "Tiago Anderson H de Oliveira - 00:22:48" },
