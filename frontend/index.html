@@ -23,7 +23,6 @@
     <ul>
       <li><a href="secoes/secoes.html">Conheça a comunidade</a></li>
       <li><a href="corridasHub/hub.html">Hub de Corridas</a></li>
-      <li><a href="publiqueCorridas/publicarCorrida.html">Publique sua corrida</a></li>
       <li><a href="#sobre">Sobre</a></li>
     </ul>
   </nav>
@@ -37,7 +36,7 @@
   <a href="corridasHub/hub.html" class="btn">Ver corridas</a>
 </section>
 
-<div class="container">
+<div class="container" id="sobre">
   <!-- O QUE É -->
   <div class="section">
     <h2>O que é o Corrida Hub</h2>
@@ -55,24 +54,12 @@
     </p>
   </div>
 <section class="gallery">
-  <h2>Momentos das corridas</h2>
+  <h2>Corridas Recentes</h2>
 
-  <div class="grid-gallery">
-    <div class="grid-item big">
-      <img src="img/sobre/grid-fotos/grid-1.webp" alt="">
-    </div>
-
-    <div class="grid-item">
-      <img src="img/sobre/grid-fotos/grid-2.JPG" alt="">
-    </div>
-
-    <div class="grid-item">
-      <img src="img/sobre/grid-fotos/grid-3.jpg" alt="">
-    </div>
-  </div>
+  <div class="grid-gallery" id="corridasRecentesGrid"></div>
 </section>
   <!-- OBJETIVO -->
-  <div class="section">
+  <div class="section" >
     <h2>Objetivo da plataforma</h2>
     <ul class="list">
       <li><strong>Reunir todas as corridas da cidade</strong> em um só lugar</li>
@@ -87,9 +74,8 @@
       acessível e confiável de corridas.
     </p>
   </div>
-
   <!-- COMO FUNCIONA -->
-  <div class="section">
+  <div class="section" style="margin-bottom: 0px;">
     <h2>Como funciona</h2>
     <p>
       O Corrida Hub funciona de forma simples e colaborativa. As informações sobre corridas
@@ -112,63 +98,10 @@
       garantindo que o calendário esteja sempre atualizado.
     </p>
   </div>
-
-  <!-- INTEGRANTES -->
-  <div class="section">
-    <h2>Integrantes</h2>
-    <div class="cards">
-      <div class="card">
-        <img src="img/sobre/integrante-victor.jpg">
-        <p><strong>Victor</strong> - Dev</p>
-      </div>
-
-      <div class="card">
-        <img src="img/sobre/anonimo.png">
-        <p><strong>Thomas</strong> - Dev</p>
-      </div>
-
-      <div class="card">
-        <img src="img/sobre/integrante-guilherme.png">
-        <p><strong>Guilherme</strong> - Dev</p>
-      </div>
-    </div>
-  </div>
-
 </div>
-<section class="faq">
-  <h2>Dúvidas Frequentes</h2>
-
-  <div class="faq-container">
-
-    <details>
-      <summary>O que é o Corrida Hub?</summary>
-      <p>O Corrida Hub é um portal que reúne informações sobre corridas de rua em Itapetininga e região, facilitando o acesso a datas, locais e inscrições.</p>
-    </details>
-
-    <details>
-      <summary>Como posso encontrar corridas?</summary>
-      <p>Você pode visualizar as corridas disponíveis diretamente na plataforma, onde os eventos são organizados de forma clara e atualizada.</p>
-    </details>
-
-    <details>
-      <summary>Posso enviar uma corrida para o site?</summary>
-      <p>Sim. Qualquer pessoa ou organização pode enviar informações sobre eventos através dos canais de contato disponíveis.</p>
-    </details>
-
-    <details>
-      <summary>As informações são confiáveis?</summary>
-      <p>Sim. Todas as informações passam por uma análise antes de serem publicadas, garantindo maior confiabilidade.</p>
-    </details>
-
-    <details>
-      <summary>O uso do site é gratuito?</summary>
-      <p>Sim. O acesso às informações e consultas de corridas no Corrida Hub é totalmente gratuito.</p>
-    </details>
-
-  </div>
-</section>
+</div>
 <section class="contact">
-  <h2>Envie sua dúvida</h2>
+  <h2>Contato</h2>
 
   <form class="contact-form">
 
@@ -220,6 +153,38 @@
 
   </form>
 </section>
+<section class="faq">
+  <h2>Dúvidas Frequentes</h2>
+
+  <div class="faq-container">
+
+    <details>
+      <summary>O que é o Corrida Hub?</summary>
+      <p>O Corrida Hub é um portal que reúne informações sobre corridas de rua em Itapetininga e região, facilitando o acesso a datas, locais e inscrições.</p>
+    </details>
+
+    <details>
+      <summary>Como posso encontrar corridas?</summary>
+      <p>Você pode visualizar as corridas disponíveis diretamente na plataforma, onde os eventos são organizados de forma clara e atualizada.</p>
+    </details>
+
+    <details>
+      <summary>Posso enviar uma corrida para o site?</summary>
+      <p>Sim. Qualquer pessoa ou organização pode enviar informações sobre eventos através dos canais de contato disponíveis.</p>
+    </details>
+
+    <details>
+      <summary>As informações são confiáveis?</summary>
+      <p>Sim. Todas as informações passam por uma análise antes de serem publicadas, garantindo maior confiabilidade.</p>
+    </details>
+
+    <details>
+      <summary>O uso do site é gratuito?</summary>
+      <p>Sim. O acesso às informações e consultas de corridas no Corrida Hub é totalmente gratuito.</p>
+    </details>
+
+  </div>
+</section>
 </main>
 <footer>
   <div>
@@ -232,15 +197,50 @@
     <ul>
       <li><a href="secoes/secoes.html">Conheça a comunidade</a></li>
       <li><a href="corridasHub/hub.html">Hub de Corridas</a></li>
-      <li><a href="publiqueCorridas/publicarCorrida.html">Publique sua corrida</a></li>
       <li><a href="#sobre">Sobre</a></li>
     </ul>
+  </div>
+
+  <div class="footer-team">
+    <h3>Desenvolvedores</h3>
+    <div class="footer-team-cards">
+      <div class="footer-team-card">
+        <img src="img/sobre/integrante-victor.jpg" alt="Victor" loading="lazy">
+        <div>
+          <span class="footer-team-name">Victor</span>
+            <span class="footer-team-role">
+              <a href="https://www.linkedin.com/in/victor-neves-039504348/" target="_blank">linkedin</a>
+          </span>
+        </div>
+      </div>
+
+      <div class="footer-team-card">
+        <img src="img/sobre/anonimo.png" alt="Thomas" loading="lazy">
+        <div>
+          <span class="footer-team-name">Thomas</span>
+          <span class="footer-team-role">
+            <a href="https://www.linkedin.com/in/thomas-paimm?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank">linkedin</a>
+          </span>
+        </div>
+      </div>
+
+      <div class="footer-team-card">
+        <img src="img/sobre/integrante-guilherme.png" alt="Guilherme" loading="lazy">
+        <div>
+          <span class="footer-team-name">Guilherme</span>
+          <span class="footer-team-role">
+            <a href="">redes sociais</a>
+          </span>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div>
     <h3>Contato</h3>
     <address>Itapetininga</address>
     <a href="mailto:contato.itp@ifsp.edu.br">contato.itp@ifsp.edu.br</a>
+    <a href="mailto:vf779080@gmail.com">vf779080@gmail.com</a>
   </div>
 </footer>
 <!-- VLibras Plugin -->
@@ -258,3 +258,4 @@
 </script>
 </body>
 </html>
+-039504348/

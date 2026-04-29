@@ -173,20 +173,20 @@ footer ul li{
 }
 
 footer ul li:hover{
-    color: var(--ternary-color);
+    color: rgba(255,255,255,0.85);
 }
 
 /* links */
 footer a{
     display: block;
     text-decoration: none;
-    color: var(--secondary-color);
+    color: var(--secondary);
     margin-bottom: 6px;
     transition: 0.2s;
 }
 
 footer a:hover{
-    color: var(--ternary-color);
+    color: rgba(255,255,255,0.85);
 }
 
 /* endereço */
@@ -200,6 +200,44 @@ footer > div:first-child{
     grid-column: 1 / -1;
     border-bottom: 1px solid rgba(255,255,255,0.2);
     padding-bottom: 15px;
+}
+
+/* Footer: integrantes (discreto) */
+.footer-team-cards{
+  display:grid;
+  gap:10px;
+}
+
+.footer-team-card{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:8px 10px;
+  border-radius:14px;
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.12);
+}
+
+.footer-team-card img{
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  object-fit:cover;
+  border:1px solid rgba(255,255,255,0.18);
+  filter:saturate(0.9);
+  opacity:0.95;
+}
+
+.footer-team-name{
+  display:block;
+  font-size:0.95rem;
+  line-height:1.05;
+}
+
+.footer-team-role{
+  display:block;
+  font-size:0.85rem;
+  opacity:0.75;
 }
 .btn{
   display:inline-block;
