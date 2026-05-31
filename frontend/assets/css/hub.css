@@ -4,7 +4,7 @@
   flex-direction: column;
   gap: 25px;
   padding: 50px 40px;
-  max-width: 1200px;
+  max-width: 100%;
   margin: auto;
 }
 
@@ -15,14 +15,70 @@
 
 /* GRID PRINCIPAL */
 .busca-corridas{
-  display: grid;
-  grid-template-columns: 300px 1fr;
+  display: flex;
   gap: 30px;
+  min-height: 600px;
+}
+
+/* SIDEBAR FILTROS - STICKY */
+.sidebar-filtros {
+  flex-shrink: 0;
+  width: 300px;
+  position: sticky;
+  top: 100px;
+  height: fit-content;
+}
+
+/* CONTAINER CARDS - SCROLL ILIMITADO */
+.container-cards {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 10px;
+  scroll-behavior: smooth;
+}
+
+/* Scrollbar personalizado */
+.container-cards::-webkit-scrollbar {
+  width: 8px;
+}
+
+.container-cards::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.container-cards::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+.container-cards::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Firefox */
+.container-cards {
+  scrollbar-color: #888 #f1f1f1;
+  scrollbar-width: thin;
 }
 
 @media (max-width: 768px) {
   .busca-corridas {
-    grid-template-columns: 1fr;
+    flex-direction: column;
+  }
+  
+  .sidebar-filtros {
+    position: static;
+    width: 100%;
+    top: auto;
+  }
+  
+  .container-cards {
+    max-height: 500px;
+  }
+
+  .resultados {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -81,29 +137,6 @@
 }
 
 /* BOTÃO DE BUSCA MODERNO */
-.form button.btn-buscar {
-  margin-top: 20px;
-  background: linear-gradient(135deg, var(--accent) 0%, #ff8c00 100%);
-  color: white;
-  border: none;
-  padding: 16px 32px;
-  border-radius: 50px;
-  font-weight: 600;
-  font-size: 1em;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(255, 107, 0, 0.3);
-  position: relative;
-  overflow: hidden;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-}
-
 .btn-wrapper {
   background: rgba(255, 255, 255, 0.96);
   border-radius: 28px;
@@ -142,33 +175,17 @@
   box-shadow: 0 4px 10px rgba(255, 107, 0, 0.18);
 }
 
-@media (min-width: 1024px) {
-  .form {
-    padding-bottom: 140px;
-    position: relative;
-  }
-
-  .btn-wrapper {
-    position: sticky;
-    bottom: 10px;
-    z-index: 2;
-  }
-}
-
 /* ================= RESULTADOS ================= */
 
 .resultados{
   display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(280px, 320px));
+  grid-template-columns: repeat(3, 1fr);
   gap:20px;
-  justify-content:center; /* evita esticar demais */
-  box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
-  height: 500px;
-  padding: 25px;
-  box-sizing: border-box;
-  overflow-y: scroll;
-  background-color: var(--gray);
+  justify-content:flex-start;
+  background-color: transparent;
+  padding: 0;
 }
+
 /* CARD */
 
 .card{
