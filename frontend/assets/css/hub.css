@@ -80,6 +80,10 @@
   .resultados {
     grid-template-columns: 1fr;
   }
+
+  .card {
+    max-width: 100%;
+  }
 }
 
 /* ================= FORM ================= */
@@ -344,12 +348,17 @@
     order: 1;
     max-height: 70vh;
     overflow-y: auto;
-    padding-bottom: 140px; /* espaÃ§o para o botÃ£o fixo */
+    padding-bottom: 140px;
     position: relative;
   }
 
   .resultados{
     order: 2;
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    max-width: 100%;
   }
 
   .btn-wrapper {
