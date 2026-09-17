@@ -1,0 +1,7 @@
+C:\Users\victo\OneDrive\Documentos\projetos\CorridaHub\CorridaHubLambda\bin\Release\net10.0\publish\CorridaHubLambda.deps.json
+C:\Users\victo\OneDrive\Documentos\projetos\CorridaHub\CorridaHubLambda\bin\Release\net10.0\publish\CorridaHubLambda.runtimeconfig.json
+C:\Users\victo\OneDrive\Documentos\projetos\CorridaHub\CorridaHubLambda\bin\Release\net10.0\publish\CorridaHubLambda.pdb
+C:\Users\victo\OneDrive\Documentos\projetos\CorridaHub\CorridaHubLambda\bin\Release\net10.0\publish\Amazon.Lambda.Core.dll
+C:\Users\victo\OneDrive\Documentos\projetos\CorridaHub\CorridaHubLambda\bin\Release\net10.0\publish\Amazon.Lambda.Serialization.SystemTextJson.dll
+C:\Users\victo\OneDrive\Documentos\projetos\CorridaHub\CorridaHubLambda\bin\Release\net10.0\publish\Amazon.Lambda.SQSEvents.dll
+C:\Users\victo\OneDrive\Documentos\projetos\CorridaHub\CorridaHubLambda\bin\Release\net10.0\publish\CorridaHubLambda.dll

@@ -1,0 +1,13 @@
+C:\Users\victo\OneDrive\Documentos\projetos\CorridaHub\CorridaHubLambda\bin\Release\net8.0\publish\CorridaHubLambda.dll
+C:\Users\victo\OneDrive\Documentos\projetos\CorridaHub\CorridaHubLambda\bin\Release\net8.0\publish\CorridaHubLambda.deps.json
+C:\Users\victo\OneDrive\Documentos\projetos\CorridaHub\CorridaHubLambda\bin\Release\net8.0\publish\CorridaHubLambda.runtimeconfig.json
+C:\Users\victo\OneDrive\Documentos\projetos\CorridaHub\CorridaHubLambda\bin\Release\net8.0\publish\CorridaHubLambda.pdb
+C:\Users\victo\OneDrive\Documentos\projetos\CorridaHub\CorridaHubLambda\bin\Release\net8.0\publish\Amazon.Lambda.Core.dll
+C:\Users\victo\OneDrive\Documentos\projetos\CorridaHub\CorridaHubLambda\bin\Release\net8.0\publish\Amazon.Lambda.Serialization.SystemTextJson.dll
+C:\Users\victo\OneDrive\Documentos\projetos\CorridaHub\CorridaHubLambda\bin\Release\net8.0\publish\Amazon.Lambda.SQSEvents.dll
+C:\Users\victo\OneDrive\Documentos\projetos\CorridaHub\CorridaHubLambda\bin\Release\net8.0\publish\BouncyCastle.Cryptography.dll
+C:\Users\victo\OneDrive\Documentos\projetos\CorridaHub\CorridaHubLambda\bin\Release\net8.0\publish\MailKit.dll
+C:\Users\victo\OneDrive\Documentos\projetos\CorridaHub\CorridaHubLambda\bin\Release\net8.0\publish\Microsoft.Bcl.Cryptography.dll
+C:\Users\victo\OneDrive\Documentos\projetos\CorridaHub\CorridaHubLambda\bin\Release\net8.0\publish\MimeKit.dll
+C:\Users\victo\OneDrive\Documentos\projetos\CorridaHub\CorridaHubLambda\bin\Release\net8.0\publish\System.Formats.Asn1.dll
+C:\Users\victo\OneDrive\Documentos\projetos\CorridaHub\CorridaHubLambda\bin\Release\net8.0\publish\System.Security.Cryptography.Pkcs.dll
