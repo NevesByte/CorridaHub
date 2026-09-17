@@ -1,0 +1,481 @@
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Corrida Hub</title>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=menu">
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="publicarCorrida.css">
+</head>
+
+<body>
+
+<header>
+
+  <a href="../index.html" class="header-brand">
+    <img src="../img/CORRIDA.png" alt="Logo do Corrida Hub">
+    <h1>Corrida Hub</h1>
+  </a>
+
+  <nav>
+    <ul>
+      <li><a href="../corridasHub/hub.html">Hub de Corridas</a></li>
+      <li><a href="../index.html#sobre">Sobre</a></li>
+      <li><a href="../secoes/apoiadores.html">Apoiadores</a></li>
+      <li><a href="../secoes/programas.html">Programas</a></li>
+      <li><a href="../secoes/pesquisa.html">Pesquisa</a></li>
+      <li><a href="../secoes/historia.html">História</a></li>
+    </ul>
+  </nav>
+
+  <span class="material-symbols-outlined menu-toggle">
+    menu
+  </span>
+
+</header>
+
+<main class="form-container">
+
+  <form class="form">
+
+    <p class="info">
+      Todas as informações enviadas passarão por uma análise da nossa equipe.
+      Em caso de dúvidas, entraremos em contato com você para verificar os dados,
+      garantir a segurança da plataforma e entender melhor o evento.
+      Após a aprovação, você será notificado sobre a publicação.
+    </p>
+
+    <h2>Publicar Corrida</h2>
+    <p class="sub">Preencha as informações do evento</p>
+
+    <div class="grid">
+
+      <div class="campo">
+        <label for="iemail">Email para contato</label>
+        <input
+          type="email"
+          name="email"
+          id="iemail"
+          placeholder="seuemail@gmail.com"
+          required
+        >
+      </div>
+
+      <div class="campo">
+        <label for="iphone">Telefone / WhatsApp</label>
+        <input
+          type="tel"
+          name="phone"
+          id="iphone"
+          placeholder="(15) 99999-9999"
+        >
+      </div>
+
+      <div class="campo">
+        <label for="inomeAnunciante">Nome do anunciante</label>
+        <input
+          name="nomeAnunciante"
+          id="inomeAnunciante"
+          type="text"
+          placeholder="Ex: Corrida da Cidade"
+          required
+        >
+      </div>
+
+      <div class="campo">
+        <label for="inomeEvento">Nome do evento</label>
+        <input
+          name="nomeEvento"
+          id="inomeEvento"
+          type="text"
+          placeholder="Ex: Corrida da Cidade"
+          required
+        >
+      </div>
+
+      <div class="campo">
+        <label for="iregiao">Região de Itapetininga</label>
+        <input
+          name="regiao"
+          id="iregiao"
+          type="text"
+          placeholder="Ex: Centro, Vila Rio Branco"
+          required
+        >
+      </div>
+
+      <div class="campo">
+        <label for="idataevento">Data do evento</label>
+        <input
+          name="dataevento"
+          id="idataevento"
+          type="date"
+          required
+        >
+      </div>
+
+      <!-- TIPO DE CORRIDA -->
+      <div class="campo">
+        <label for="itipoCorrida">Tipo de corrida</label>
+
+        <select
+          name="tipoCorrida"
+          id="itipoCorrida"
+          required
+        >
+          <option value="CorridaDeRua">Corridas de rua</option>
+          <option value="CorridaDeCampo">Corridas de campo</option>
+          <option value="CorridaDeTrilha">Corridas de trilha</option>
+          <option value="CorridaDeEscada">Corridas de escada</option>
+          <option value="CorridaCrossCountry">Corridas cross country</option>
+        </select>
+      </div>
+
+      <!-- CATEGORIA -->
+      <div class="campo">
+        <label for="icategoriaCorredores">
+          Categoria de Corredores
+        </label>
+
+        <select
+          name="categoriaCorredores"
+          id="icategoriaCorredores"
+          required
+        >
+          <option value="Masculino">Masculino</option>
+          <option value="Feminino">Feminino</option>
+          <option value="Vovos">Vovôs e Vovós</option>
+          <option value="Jovens">Jovens</option>
+          <option value="Criancas">Crianças</option>
+          <option value="Veteranos">Veteranos</option>
+          <option value="Iniciantes">Iniciantes</option>
+          <option value="Todos">Todos</option>
+        </select>
+      </div>
+
+      <!-- PREMIAÇÃO -->
+      <div class="campo">
+        <label for="ipremiacao">Premiação</label>
+
+        <select
+          name="premiacao"
+          id="ipremiacao"
+          required
+        >
+          <option value="SemPremiacao">
+            Sem premiação
+          </option>
+
+          <option value="ComPremiacao">
+            Com premiação (Monetizado ou não)
+          </option>
+
+          <option value="PremiacaoDinheiro">
+            Premiação em dinheiro
+          </option>
+        </select>
+      </div>
+
+      <!-- CAMPO DE IMAGEM -->
+      <div class="campo full">
+
+        <label>Imagem do evento</label>
+
+        <label class="upload">
+
+          <input
+            type="file"
+            id="imagemEvento"
+            accept="image/*"
+          >
+
+          <span>
+            Clique para enviar uma imagem
+          </span>
+
+        </label>
+
+      </div>
+
+    </div>
+
+    <button
+      type="submit"
+      class="btn"
+    >
+      Publicar Evento
+    </button>
+
+  </form>
+
+</main>
+
+<footer>
+
+  <div>
+    <h2>Corrida Hub</h2>
+    <p>© 2026 Todos os direitos reservados</p>
+  </div>
+
+  <div>
+    <h3>Navegação</h3>
+
+    <ul>
+      <li>
+        <a href="../corridasHub/hub.html">
+          Hub de Corridas
+        </a>
+      </li>
+
+      <li>
+        <a href="../index.html#sobre">
+          Sobre
+        </a>
+      </li>
+
+      <li>
+        <a href="../secoes/apoiadores.html">
+          Apoiadores
+        </a>
+      </li>
+
+      <li>
+        <a href="../secoes/programas.html">
+          Programas
+        </a>
+      </li>
+
+      <li>
+        <a href="../secoes/pesquisa.html">
+          Pesquisa
+        </a>
+      </li>
+
+      <li>
+        <a href="../secoes/historia.html">
+          História
+        </a>
+      </li>
+    </ul>
+
+  </div>
+
+  <div class="footer-team">
+
+    <h3>Desenvolvedores</h3>
+
+    <div class="footer-team-cards">
+
+      <div class="footer-team-card">
+
+        <img
+          src="../img/sobre/integrante-victor.jpg"
+          alt="Victor"
+          loading="lazy"
+        >
+
+        <div>
+
+          <span class="footer-team-name">
+            Victor
+          </span>
+
+          <span class="footer-team-role">
+
+            <a
+              href="https://www.linkedin.com/in/victor-neves-039504348/"
+              target="_blank"
+            >
+              linkedin
+            </a>
+
+          </span>
+
+        </div>
+
+      </div>
+
+      <div class="footer-team-card">
+
+        <img
+          src="../img/sobre/anonimo.png"
+          alt="Thomas"
+          loading="lazy"
+        >
+
+        <div>
+
+          <span class="footer-team-name">
+            Thomas
+          </span>
+
+          <span class="footer-team-role">
+
+            <a
+              href="https://www.linkedin.com/in/thomas-paimm?utm_source=share_via&utm_content=profile&utm_medium=member_android"
+              target="_blank"
+            >
+              linkedin
+            </a>
+
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div>
+
+    <h3>Contato</h3>
+
+    <a href="mailto:vf779080@gmail.com">
+      vf779080@gmail.com
+    </a>
+
+    <a
+      href="https://wa.me/15991353632"
+      target="_blank"
+    >
+      WhatsApp
+    </a>
+
+    <a
+      href="https://www.instagram.com/corrida_hub?igsh=MTl2ajUzd2k2YnhoYQ=="
+      target="_blank"
+    >
+      Instagram
+    </a>
+
+  </div>
+
+</footer>
+
+<!-- VLibras Plugin -->
+
+<div vw class="enabled">
+
+  <div vw-access-button class="active"></div>
+
+  <div vw-plugin-wrapper>
+
+    <div class="vw-plugin-top-wrapper"></div>
+
+  </div>
+
+</div>
+
+<script>
+
+document
+  .querySelector(".form")
+  .addEventListener("submit", async function (event) {
+
+    event.preventDefault();
+
+    const dto = {
+
+      emailContato:
+        document.getElementById("iemail").value,
+
+      telefone:
+        document.getElementById("iphone").value,
+
+      nomeAnunciante:
+        document.getElementById("inomeAnunciante").value,
+
+      nomeEvento:
+        document.getElementById("inomeEvento").value,
+
+      regiaoItapetininga:
+        document.getElementById("iregiao").value,
+
+      dataEvento:
+        document.getElementById("idataevento").value,
+
+      tipoCorrida:
+        document.getElementById("itipoCorrida").value,
+
+      categoriaCorredores:
+        document.getElementById("icategoriaCorredores").value,
+
+      premiacao:
+        document.getElementById("ipremiacao").value
+    };
+
+    console.log("DTO enviado:", dto);
+
+    try {
+
+      const formData = new FormData();
+
+      // Adiciona os campos do DTO
+      Object.entries(dto).forEach(([chave, valor]) => {
+        formData.append(chave, valor);
+      });
+
+      // Adiciona a imagem
+      const inputImagem = document.getElementById("imagemEvento");
+      const imagem = inputImagem.files[0];
+
+      if (imagem) {
+        formData.append("imagem", imagem);
+      }
+
+      const apiUrl =
+        "https://newton-demanding-quantum-super.trycloudflare.com/api/solicitacao-corrida";
+
+      const response = await fetch(apiUrl, {
+        method: "POST",
+        body: formData
+      });
+
+      if (response.ok) {
+
+        alert("Corrida enviada com sucesso!");
+
+        document
+          .querySelector(".form")
+          .reset();
+
+      } else {
+
+        const erro = await response.text();
+
+        console.error("Erro da API:", erro);
+
+        alert("Erro ao enviar a corrida.");
+      }
+
+    } catch (error) {
+
+      console.error("Erro de conexão:", error);
+
+      alert("Não foi possível conectar ao servidor.");
+    }
+
+  });
+
+</script>
+
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+
+<script src="../assets/js/menu.js"></script>
+
+<script>
+  new window.VLibras.Widget(
+    'https://vlibras.gov.br/app'
+  );
+</script>
+
+</body>
+</html>
+```
+
+A principal correção foi nos `value=""` dos três `<select>`. Agora o navegador envia exatamente os nomes dos seus enums C# (`CorridaDeRua`, `Vovos`, `SemPremiacao`, etc.).

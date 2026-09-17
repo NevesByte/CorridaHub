@@ -1,0 +1,493 @@
+/* =========================
+   BUSCA DE CORRIDAS
+========================= */
+
+.busca-corridas-container {
+    width: 100%;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+.busca-corridas {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    width: 100%;
+}
+
+/* =========================
+   SIDEBAR / FILTROS
+========================= */
+
+.sidebar-filtros {
+    width: 240px;
+    min-width: 240px;
+    background: var(--secondary, #f5f5f5);
+    padding: 18px;
+    border-radius: 14px;
+    box-sizing: border-box;
+    position: sticky;
+    top: 20px;
+}
+
+.sidebar-filtros h2,
+.sidebar-filtros h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: var(--primary, #222);
+}
+
+.sidebar-filtros form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.sidebar-filtros label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #555;
+}
+
+.sidebar-filtros input,
+.sidebar-filtros select {
+    width: 100%;
+    padding: 9px 10px;
+    border: 1px solid #ddd;
+    border-radius: 7px;
+    background: #fff;
+    font-size: 12px;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.sidebar-filtros input:focus,
+.sidebar-filtros select:focus {
+    border-color: var(--primary, #333);
+}
+
+.sidebar-filtros button {
+    width: 100%;
+    border: none;
+    border-radius: 7px;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* =========================
+   CONTAINER DOS CARDS
+========================= */
+
+.container-cards {
+    flex: 1;
+    min-width: 0;
+    padding: 0;
+}
+
+/* =========================
+   GRID
+========================= */
+
+.resultados {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    gap: 14px;
+    width: 100%;
+    align-items: start;
+}
+
+/* =========================
+   CARD
+========================= */
+
+.card-corrida {
+    width: 100%;
+    min-width: 0;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.07);
+
+    display: flex;
+    flex-direction: column;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.card-corrida:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 7px 18px rgba(0, 0, 0, 0.12);
+}
+
+/* =========================
+   IMAGEM
+========================= */
+
+.card-corrida-imagem {
+    width: 100%;
+    height: 105px;
+    overflow: hidden;
+    background: #eee;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+}
+
+.card-corrida-imagem img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+
+    transition: transform 0.3s ease;
+}
+
+.card-corrida:hover .card-corrida-imagem img {
+    transform: scale(1.04);
+}
+
+/* Sem imagem */
+
+.imagem-sem-foto {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #f1f1f1;
+    color: #888;
+
+    font-size: 11px;
+}
+
+/* Imagem indisponível */
+
+.imagem-indisponivel {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #f1f1f1;
+    color: #888;
+
+    font-size: 11px;
+}
+
+/* =========================
+   CONTEÚDO
+========================= */
+
+.card-corrida-conteudo {
+    padding: 11px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.card-corrida-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 7px;
+    margin-bottom: 9px;
+}
+
+.card-corrida-header h3 {
+    margin: 0;
+
+    color: var(--primary, #222);
+
+    font-size: 14px;
+    line-height: 1.25;
+    font-weight: 700;
+
+    flex: 1;
+    min-width: 0;
+
+    word-break: break-word;
+}
+
+/* =========================
+   STATUS
+========================= */
+
+.status-corrida {
+    flex-shrink: 0;
+
+    background: #e8f7ed;
+    color: #198754;
+
+    padding: 3px 6px;
+    border-radius: 20px;
+
+    font-size: 8px;
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+/* =========================
+   INFORMAÇÕES
+========================= */
+
+.card-corrida-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.card-corrida-info p {
+    margin: 0;
+
+    font-size: 10px;
+    line-height: 1.35;
+
+    color: #666;
+
+    display: flex;
+    align-items: baseline;
+
+    gap: 4px;
+
+    word-break: break-word;
+}
+
+.card-corrida-info strong {
+    color: var(--primary, #222);
+
+    font-size: 10px;
+
+    flex-shrink: 0;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.card-corrida-footer {
+    margin-top: 9px;
+    padding-top: 7px;
+
+    border-top: 1px solid #eee;
+
+    display: flex;
+    justify-content: flex-end;
+}
+
+.card-corrida-footer span {
+    background: var(--gray, #eee);
+    color: #666;
+
+    padding: 3px 7px;
+    border-radius: 5px;
+
+    font-size: 8px;
+    font-weight: 600;
+}
+
+/* =========================
+   SEM RESULTADOS
+========================= */
+
+.sem-resultados {
+    width: 100%;
+    padding: 35px 20px;
+
+    text-align: center;
+
+    color: #777;
+    font-size: 13px;
+
+    background: #fafafa;
+    border-radius: 10px;
+
+    box-sizing: border-box;
+}
+
+/* =========================
+   LOADING
+========================= */
+
+.estado-carregamento {
+    width: 100%;
+    padding: 35px 20px;
+
+    text-align: center;
+
+    color: #777;
+    font-size: 13px;
+}
+
+/* =========================
+   ERRO
+========================= */
+
+.erro-resultados {
+    width: 100%;
+    padding: 20px;
+
+    background: #fff0f0;
+    border: 1px solid #ffd0d0;
+    border-radius: 10px;
+
+    color: #c62828;
+
+    font-size: 12px;
+    text-align: center;
+
+    box-sizing: border-box;
+}
+
+/* =========================
+   PAGINAÇÃO
+========================= */
+
+#paginacao {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 12px;
+
+    margin-top: 18px;
+}
+
+#paginacao button {
+    border: none;
+
+    background: var(--primary, #222);
+    color: #fff;
+
+    padding: 7px 12px;
+
+    border-radius: 6px;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: opacity 0.2s ease;
+}
+
+#paginacao button:hover {
+    opacity: 0.85;
+}
+
+#paginacao button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+#paginaAtual {
+    font-size: 11px;
+    font-weight: 600;
+    color: #555;
+}
+
+/* =========================
+   FORMULÁRIO DE BUSCA
+========================= */
+
+.form {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.form input,
+.form select {
+    box-sizing: border-box;
+}
+
+/* =========================
+   RESPONSIVO
+========================= */
+
+@media (max-width: 900px) {
+
+    .busca-corridas-container {
+        padding: 20px;
+    }
+
+    .busca-corridas {
+        flex-direction: column;
+    }
+
+    .sidebar-filtros {
+        width: 100%;
+        min-width: 0;
+        position: static;
+    }
+
+    .container-cards {
+        width: 100%;
+    }
+
+    .resultados {
+        grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+
+    .busca-corridas-container {
+        padding: 15px;
+    }
+
+    .resultados {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    .card-corrida-imagem {
+        height: 90px;
+    }
+
+    .card-corrida-conteudo {
+        padding: 9px;
+    }
+
+    .card-corrida-header h3 {
+        font-size: 12px;
+    }
+
+    .card-corrida-info p,
+    .card-corrida-info strong {
+        font-size: 9px;
+    }
+
+    .status-corrida {
+        font-size: 7px;
+        padding: 3px 5px;
+    }
+}
+
+@media (max-width: 400px) {
+
+    .resultados {
+        grid-template-columns: 1fr;
+    }
+
+    .card-corrida-imagem {
+        height: 110px;
+    }
+}

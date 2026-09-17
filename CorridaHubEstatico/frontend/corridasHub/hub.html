@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Corrida Hub</title>
+
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=menu"
+  >
+
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="../assets/css/hub.css">
+</head>
+
+<body>
+
+<header>
+
+  <a href="../index.html" class="header-brand">
+    <img src="../img/CORRIDA.png" alt="Logo do Corrida Hub">
+    <h1>Corrida Hub</h1>
+  </a>
+
+  <nav>
+    <ul>
+      <li>
+        <a href="../corridasHub/hub.html">
+          Hub de Corridas
+        </a>
+      </li>
+
+      <li>
+        <a href="../index.html#sobre">
+          Sobre
+        </a>
+      </li>
+
+      <li>
+        <a href="../secoes/apoiadores.html">
+          Apoiadores
+        </a>
+      </li>
+
+      <li>
+        <a href="../secoes/programas.html">
+          Programas
+        </a>
+      </li>
+
+      <li>
+        <a href="../secoes/pesquisa.html">
+          Pesquisa
+        </a>
+      </li>
+
+      <li>
+        <a href="../secoes/historia.html">
+          História
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <span class="material-symbols-outlined menu-toggle">
+    menu
+  </span>
+
+</header>
+
+
+<main>
+
+  <section class="busca-corridas-container">
+
+    <h2>Busque por corridas</h2>
+
+    <div class="busca-corridas">
+
+      <!-- ========================= -->
+      <!-- SIDEBAR DE FILTROS -->
+      <!-- ========================= -->
+
+      <div class="sidebar-filtros">
+
+        <form class="form" id="formBusca">
+
+          <h3>Filtros</h3>
+
+          <div class="campo">
+            <label for="nome">
+              Nome do evento
+            </label>
+
+            <input
+              type="text"
+              id="nome"
+              placeholder="Digite o nome..."
+            >
+          </div>
+
+
+          <div class="campo">
+            <label for="distancia">
+              Distância (KM)
+            </label>
+
+            <input
+              type="text"
+              id="distancia"
+              placeholder="Digite a distância..."
+            >
+          </div>
+
+
+          <div class="campo">
+            <label for="regiao">
+              Região
+            </label>
+
+            <input
+              type="text"
+              id="regiao"
+              placeholder="Ex: Centro"
+            >
+          </div>
+
+
+          <div class="campo">
+            <label for="data">
+              Data
+            </label>
+
+            <input
+              type="date"
+              id="data"
+            >
+          </div>
+
+
+          <div class="campo">
+
+            <label for="tipo">
+              Tipo
+            </label>
+
+            <select id="tipo">
+
+              <option value="">
+                Selecione
+              </option>
+
+              <option value="rua">
+                Corridas de rua
+              </option>
+
+              <option value="campo">
+                Corridas de campo
+              </option>
+
+              <option value="trilha">
+                Corridas de trilha
+              </option>
+
+              <option value="escada">
+                Corridas de escada
+              </option>
+
+              <option value="cross">
+                Corridas cross country
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div class="campo">
+
+            <label for="categoria">
+              Categoria
+            </label>
+
+            <select id="categoria">
+
+              <option value="">
+                Selecione
+              </option>
+
+              <option value="masculino">
+                Masculino
+              </option>
+
+              <option value="feminino">
+                Feminino
+              </option>
+
+              <option value="jovens">
+                Jovens
+              </option>
+
+              <option value="criancas">
+                Crianças
+              </option>
+
+              <option value="veteranos">
+                Veteranos
+              </option>
+
+              <option value="iniciantes">
+                Iniciantes
+              </option>
+
+              <option value="todos">
+                Todos
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div class="campo">
+
+            <label for="premiacao">
+              Premiação
+            </label>
+
+            <select id="premiacao">
+
+              <option value="">
+                Selecione
+              </option>
+
+              <option value="sem">
+                Sem premiação
+              </option>
+
+              <option value="com">
+                Com premiação
+              </option>
+
+              <option value="dinheiro">
+                Premiação em dinheiro
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div class="campo">
+
+            <label for="programa">
+              Programa
+            </label>
+
+            <select id="programa">
+
+              <option value="">
+                Selecione
+              </option>
+
+              <option value="correr-caminhar">
+                Correr e Caminhar com Saúde
+              </option>
+
+              <option value="60+">
+                60+
+              </option>
+
+              <option value="kids">
+                Kids
+              </option>
+
+              <option value="parcerias">
+                Parcerias Culturais
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div class="campo">
+
+            <label for="status">
+              Status
+            </label>
+
+            <select id="status">
+
+              <option value="">
+                Selecione
+              </option>
+
+              <option value="realizada">
+                Já ocorreu
+              </option>
+
+              <option value="agendada">
+                Ainda vai acontecer
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div class="campo">
+
+            <label for="organizadores">
+              Organizadores
+            </label>
+
+            <input
+              type="text"
+              id="organizadores"
+              placeholder="Digite o organizador..."
+            >
+
+          </div>
+
+
+          <div class="btn-wrapper">
+
+            <button
+              type="submit"
+              class="btn-buscar"
+            >
+              Buscar
+            </button>
+
+          </div>
+
+        </form>
+
+      </div>
+
+
+      <!-- ========================= -->
+      <!-- RESULTADOS -->
+      <!-- ========================= -->
+
+      <div class="container-cards">
+
+        <div
+          class="resultados"
+          id="resultados"
+        >
+
+          <div
+            class="estado-carregamento"
+            id="loading"
+          >
+            Carregando corridas...
+          </div>
+
+        </div>
+
+
+        <!-- PAGINAÇÃO -->
+
+        <div
+          class="paginacao"
+          id="paginacao"
+          style="display: none;"
+        >
+
+          <button
+            type="button"
+            id="btnAnterior"
+          >
+            Anterior
+          </button>
+
+          <span id="paginaAtual">
+            Página 1
+          </span>
+
+          <button
+            type="button"
+            id="btnProxima"
+          >
+            Próxima
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<!-- ========================= -->
+<!-- FOOTER -->
+<!-- ========================= -->
+
+<footer>
+
+  <div>
+
+    <h2>
+      Corrida Hub
+    </h2>
+
+    <p>
+      © 2026 Todos os direitos reservados
+    </p>
+
+  </div>
+
+
+  <div>
+
+    <h3>
+      Navegação
+    </h3>
+
+    <ul>
+
+      <li>
+        <a href="../corridasHub/hub.html">
+          Hub de Corridas
+        </a>
+      </li>
+
+      <li>
+        <a href="../index.html#sobre">
+          Sobre
+        </a>
+      </li>
+
+      <li>
+        <a href="../secoes/apoiadores.html">
+          Apoiadores
+        </a>
+      </li>
+
+      <li>
+        <a href="../secoes/programas.html">
+          Programas
+        </a>
+      </li>
+
+      <li>
+        <a href="../secoes/pesquisa.html">
+          Pesquisa
+        </a>
+      </li>
+
+      <li>
+        <a href="../secoes/historia.html">
+          História
+        </a>
+      </li>
+
+    </ul>
+
+  </div>
+
+
+  <div class="footer-team">
+
+    <h3>
+      Desenvolvedores
+    </h3>
+
+    <div class="footer-team-cards">
+
+      <div class="footer-team-card">
+
+        <img
+          src="../img/sobre/integrante-victor.jpg"
+          alt="Victor"
+          loading="lazy"
+        >
+
+        <div>
+
+          <span class="footer-team-name">
+            Victor
+          </span>
+
+          <span class="footer-team-role">
+
+            <a
+              href="https://www.linkedin.com/in/victor-neves-039504348/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              linkedin
+            </a>
+
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <div class="footer-team-card">
+
+        <img
+          src="../img/sobre/anonimo.png"
+          alt="Thomas"
+          loading="lazy"
+        >
+
+        <div>
+
+          <span class="footer-team-name">
+            Thomas
+          </span>
+
+          <span class="footer-team-role">
+
+            <a
+              href="https://www.linkedin.com/in/thomas-paimm?utm_source=share_via&utm_content=profile&utm_medium=member_android"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              linkedin
+            </a>
+
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div>
+
+    <h3>
+      Contato
+    </h3>
+
+    <a href="mailto:vf779080@gmail.com">
+      vf779080@gmail.com
+    </a>
+
+    <a
+      href="https://wa.me/15991353632"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      WhatsApp
+    </a>
+
+    <a
+      href="https://www.instagram.com/corrida_hub?igsh=MTl2ajUzd2k2YnhoYQ=="
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Instagram
+    </a>
+
+  </div>
+
+</footer>
+
+
+<!-- ========================= -->
+<!-- VLIBRAS -->
+<!-- ========================= -->
+
+<div
+  vw
+  class="enabled"
+>
+
+  <div
+    vw-access-button
+    class="active"
+  ></div>
+
+  <div vw-plugin-wrapper>
+
+    <div class="vw-plugin-top-wrapper"></div>
+
+  </div>
+
+</div>
+
+
+<!-- ========================= -->
+<!-- SCRIPTS -->
+<!-- ========================= -->
+
+<script src="../assets/js/menu.js"></script>
+
+<script src="../assets/js/hub.js"></script>
+
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+
+<script>
+  new window.VLibras.Widget(
+    'https://vlibras.gov.br/app'
+  );
+</script>
+
+</body>
+
+</html>

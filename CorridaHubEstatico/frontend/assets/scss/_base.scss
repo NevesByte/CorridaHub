@@ -1,0 +1,37 @@
+:root {
+  --primary: #{$primary};
+  --secondary: #{$secondary};
+  --accent: #{$accent};
+  --gray: #{$gray};
+  --transition-fast: #{$transition-fast};
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: var(--gray);
+}
+
+main {
+  margin-top: 80px;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: var(--accent);
+  color: var(--secondary);
+  border-radius: 8px;
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+.btn:hover {
+  opacity: 0.8;
+}

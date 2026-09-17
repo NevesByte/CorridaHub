@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Administração - Corrida Hub</title>
+
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="./adm.css">
+</head>
+
+<body>
+<main class="admin-container">
+
+    <section class="admin-header">
+
+        <div>
+            <h2>Solicitações de Corridas</h2>
+
+            <p>
+                Gerencie as solicitações enviadas para o Corrida Hub.
+            </p>
+        </div>
+
+        <button
+            type="button"
+            class="btn-primary"
+            id="btnNovaSolicitacao">
+            Nova solicitação
+        </button>
+
+    </section>
+
+
+    <!-- MENSAGEM -->
+
+    <div
+        id="mensagem"
+        class="mensagem"
+        style="display: none;">
+    </div>
+
+
+    <!-- LISTAGEM -->
+
+    <section class="lista-section">
+
+        <div class="lista-header">
+
+            <h3>Solicitações</h3>
+
+            <button
+                type="button"
+                id="btnAtualizar"
+                class="btn-secondary">
+                Atualizar
+            </button>
+
+        </div>
+
+
+        <div
+            id="loading"
+            class="loading"
+            style="display: none;">
+            Carregando corridas...
+        </div>
+
+
+        <div
+            id="listaCorridas"
+            class="lista-corridas">
+        </div>
+
+
+        <!-- PAGINAÇÃO -->
+
+        <div class="paginacao">
+
+            <button
+                type="button"
+                id="btnAnterior"
+                class="btn-secondary">
+                ← Anterior
+            </button>
+
+            <span id="paginaAtual">
+                Página 1
+            </span>
+
+            <button
+                type="button"
+                id="btnProxima"
+                class="btn-secondary">
+                Próxima →
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- MODAL NOVA SOLICITAÇÃO -->
+
+    <div
+        id="modalSolicitacao"
+        class="modal"
+        style="display: none;">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h3>Nova solicitação</h3>
+
+                <button
+                    type="button"
+                    id="btnFecharModal"
+                    class="btn-fechar">
+                    ×
+                </button>
+
+            </div>
+
+
+            <form id="formSolicitacao">
+
+                <div class="campo">
+                    <label for="emailContato">
+                        E-mail
+                    </label>
+
+                    <input
+                        type="email"
+                        id="emailContato"
+                        required>
+                </div>
+
+
+                <div class="campo">
+                    <label for="telefone">
+                        Telefone
+                    </label>
+
+                    <input
+                        type="text"
+                        id="telefone"
+                        required>
+                </div>
+
+
+                <div class="campo">
+                    <label for="nomeAnunciante">
+                        Nome do anunciante
+                    </label>
+
+                    <input
+                        type="text"
+                        id="nomeAnunciante"
+                        required>
+                </div>
+
+
+                <div class="campo">
+                    <label for="nomeEvento">
+                        Nome do evento
+                    </label>
+
+                    <input
+                        type="text"
+                        id="nomeEvento"
+                        required>
+                </div>
+
+
+                <div class="campo">
+                    <label for="regiaoItapetininga">
+                        Região
+                    </label>
+
+                    <input
+                        type="text"
+                        id="regiaoItapetininga"
+                        required>
+                </div>
+
+
+                <div class="campo">
+                    <label for="dataEvento">
+                        Data do evento
+                    </label>
+
+                    <input
+                        type="date"
+                        id="dataEvento"
+                        required>
+                </div>
+
+
+                <div class="campo">
+
+                    <label for="tipoCorrida">
+                        Tipo da corrida
+                    </label>
+
+                    <select
+                        id="tipoCorrida"
+                        required>
+
+                        <option value="">
+                            Selecione
+                        </option>
+
+                        <option value="CorridaDeRua">
+                            Corrida de Rua
+                        </option>
+
+                        <option value="CorridaDeCampo">
+                            Corrida de Campo
+                        </option>
+
+                        <option value="CorridaDeTrilha">
+                            Corrida de Trilha
+                        </option>
+
+                        <option value="CorridaDeEscada">
+                            Corrida de Escada
+                        </option>
+
+                        <option value="CorridaCrossCountry">
+                            Cross Country
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label for="categoriaCorredores">
+                        Categoria
+                    </label>
+
+                    <select
+                        id="categoriaCorredores"
+                        required>
+
+                        <option value="">
+                            Selecione
+                        </option>
+
+                        <option value="Masculino">
+                            Masculino
+                        </option>
+
+                        <option value="Feminino">
+                            Feminino
+                        </option>
+
+                        <option value="Vovos">
+                            Vovôs
+                        </option>
+
+                        <option value="Jovens">
+                            Jovens
+                        </option>
+
+                        <option value="Criancas">
+                            Crianças
+                        </option>
+
+                        <option value="Veteranos">
+                            Veteranos
+                        </option>
+
+                        <option value="Iniciantes">
+                            Iniciantes
+                        </option>
+
+                        <option value="Todos">
+                            Todos
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label for="premiacao">
+                        Premiação
+                    </label>
+
+                    <select
+                        id="premiacao"
+                        required>
+
+                        <option value="">
+                            Selecione
+                        </option>
+
+                        <option value="SemPremiacao">
+                            Sem premiação
+                        </option>
+
+                        <option value="ComPremiacao">
+                            Com premiação
+                        </option>
+
+                        <option value="PremiacaoDinheiro">
+                            Premiação em dinheiro
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="modal-actions">
+
+                    <button
+                        type="button"
+                        id="btnCancelar"
+                        class="btn-secondary">
+                        Cancelar
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="btn-primary">
+                        Enviar
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<script src="./adm.js"></script>
+
+</body>
+
+</html>

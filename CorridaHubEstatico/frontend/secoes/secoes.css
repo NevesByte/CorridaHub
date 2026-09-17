@@ -1,0 +1,242 @@
+/* Estilos globais para imagens */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ================= NAVEGAÇÃO ENTRE SEÇÕES ================= */
+.section-nav {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  padding: 40px;
+  max-width: 1200px;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-item {
+  padding: 12px 24px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: 2px solid var(--primary);
+  color: var(--primary);
+  display: inline-block;
+  font-size: 0.95em;
+}
+
+.nav-item:hover {
+  background-color: var(--primary);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.nav-item.active {
+  background-color: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+.nav-item.back {
+  background-color: #e9ecef;
+  color: var(--primary);
+  border-color: #e9ecef;
+  margin-left: auto;
+}
+
+.nav-item.back:hover {
+  background-color: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+@media (max-width: 768px) {
+  .section-nav {
+    gap: 10px;
+    padding: 30px 20px;
+  }
+  
+  .nav-item {
+    padding: 10px 16px;
+    font-size: 0.9em;
+  }
+
+  .nav-item.back {
+    margin-left: 0;
+    margin-top: 10px;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* Estilos globais para imagens */
+
+/* Estilos para Apoiadores */
+.apoiadores-section {
+  padding: 50px 40px;
+  max-width: 1200px;
+  margin: auto;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.apoiadores-section h2 {
+  color: var(--primary);
+  font-size: 2em;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.apoiadores-section p {
+  font-size: 1.1em;
+  line-height: 1.6;
+  color: #555;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.apoiadores-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.apoio-card {
+  background: var(--gray);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.apoio-card:hover {
+  transform: translateY(-5px);
+}
+
+.apoio-card img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+
+.apoio-card h3 {
+  color: var(--primary);
+  font-size: 1.1em;
+  margin-bottom: 10px;
+}
+
+.apoio-card p {
+  color: #555;
+  line-height: 1.5;
+  font-size: 0.95em;
+  margin-bottom: 0;
+}
+
+@media(max-width: 768px) {
+  .apoiadores-section {
+    padding: 30px 20px;
+  }
+  .apoiadores-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Estilos para Programas */
+.programas-section {
+  padding: 50px 40px;
+  max-width: 1200px;
+  margin: auto;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  margin-bottom: 40px;
+}
+
+.programas-section h2 {
+  color: var(--primary);
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.programas-section p {
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 15px;
+  font-size: 1.05em;
+}
+
+@media(max-width: 768px) {
+  .programas-section {
+    padding: 30px 20px;
+  }
+}
+
+/* Estilos para Pesquisa */
+.pesquisa-section {
+  padding: 50px 40px;
+  max-width: 1200px;
+  margin: auto;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  margin-bottom: 40px;
+}
+
+.pesquisa-section h2 {
+  color: var(--primary);
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.pesquisa-section p {
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 15px;
+  font-size: 1.05em;
+}
+
+@media(max-width: 1024px) {
+  .pesquisa-section {
+    padding: 30px 20px;
+  }
+}
+
+/* Estilos para História */
+.timeline-section {
+  padding: 50px 40px;
+  max-width: 1200px;
+  margin: auto;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  margin-bottom: 40px;
+}
+
+.timeline-section h2 {
+  color: var(--primary);
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.timeline-section p {
+  font-size: 1.05em;
+  line-height: 1.6;
+  margin-bottom: 15px;
+  color: #555;
+}
+
+@media(max-width: 768px) {
+  .timeline-section {
+    padding: 30px 20px;
+  }
+}
