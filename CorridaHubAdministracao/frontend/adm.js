@@ -1,6 +1,49 @@
-const API_URL =
-    "https://caroline-commentary-patio-complicated.trycloudflare.com";
+const API_URL = window.location.origin;
 
+let decisaoEmAndamento = false;
+let bloqueioDecisao = null;
+
+function avisarSaidaDuranteDecisao(event) {
+    event.preventDefault();
+    event.returnValue = "";
+}
+
+function bloquearPainel() {
+    decisaoEmAndamento = true;
+    document.querySelector("main").inert = true;
+    document.querySelector("main").setAttribute("aria-busy", "true");
+    bloqueioDecisao = document.createElement("div");
+    bloqueioDecisao.className = "bloqueio-decisao";
+    bloqueioDecisao.setAttribute("role", "status");
+    bloqueioDecisao.setAttribute("aria-live", "polite");
+    bloqueioDecisao.tabIndex = -1;
+    bloqueioDecisao.textContent = "Enviando decisão. Aguarde…";
+    document.body.appendChild(bloqueioDecisao);
+    bloqueioDecisao.focus();
+    window.addEventListener("beforeunload", avisarSaidaDuranteDecisao);
+}
+
+function desbloquearPainel() {
+    bloqueioDecisao?.remove();
+    bloqueioDecisao = null;
+    document.querySelector("main").inert = false;
+    document.querySelector("main").removeAttribute("aria-busy");
+    decisaoEmAndamento = false;
+    window.removeEventListener("beforeunload", avisarSaidaDuranteDecisao);
+    btnAtualizar.focus();
+}
+
+async function aguardarAtualizacao() {
+    const fim = Date.now() + 5000;
+    let segundos;
+    do {
+        segundos = Math.max(0, Math.ceil((fim - Date.now()) / 1000));
+        bloqueioDecisao.textContent = `Decisão enviada. Atualizando em ${segundos} segundos…`;
+        if (segundos > 0) await new Promise(resolve => setTimeout(resolve, 200));
+    } while (segundos > 0);
+    bloqueioDecisao.textContent = "Atualizando solicitações…";
+    await listarCorridas();
+}
 
 // =====================================================
 // ENDPOINTS
@@ -226,7 +269,10 @@ function renderizarCorridas(corridas) {
                     src="${escaparHtml(corrida.imagemUrl)}"
                     alt="Imagem da corrida"
                     class="corrida-imagem"
-                    onerror="this.style.display='none';">
+                    loading="lazy"
+                    tabindex="0"
+                    role="button"
+                    aria-label="Ampliar imagem da corrida">
             `;
         }
 
@@ -356,6 +402,23 @@ function renderizarCorridas(corridas) {
         );
 
 
+        const imagem = card.querySelector(".corrida-imagem");
+        if (imagem) {
+            const ampliar = () => ampliarImagemCorrida(imagem, corrida.nomeEvento || "Imagem da corrida");
+            imagem.addEventListener("click", ampliar);
+            imagem.addEventListener("keydown", event => {
+                if (event.key === "Enter" || event.key === " ") {
+                    event.preventDefault();
+                    ampliar();
+                }
+            });
+            imagem.addEventListener("error", () => {
+                const aviso = document.createElement("p");
+                aviso.className = "imagem-indisponivel";
+                aviso.textContent = "Imagem indisponível. Clique em Atualizar para tentar novamente.";
+                imagem.replaceWith(aviso);
+            }, { once: true });
+        }
         listaCorridas.appendChild(card);
 
     });
@@ -367,6 +430,8 @@ function renderizarCorridas(corridas) {
 // =====================================================
 
 async function aceitarCorrida(uid) {
+
+    if (decisaoEmAndamento) return;
 
     const confirmar =
         confirm(
@@ -381,6 +446,7 @@ async function aceitarCorrida(uid) {
 
     try {
 
+        bloquearPainel();
         const url =
             `${ENDPOINT_ACEITAR}?uid=${encodeURIComponent(uid)}`;
 
@@ -457,7 +523,7 @@ async function aceitarCorrida(uid) {
         );
 
 
-        await listarCorridas();
+        await aguardarAtualizacao();
 
     } catch (error) {
 
@@ -467,6 +533,8 @@ async function aceitarCorrida(uid) {
             error.message,
             "erro"
         );
+    } finally {
+        desbloquearPainel();
     }
 }
 
@@ -476,6 +544,8 @@ async function aceitarCorrida(uid) {
 // =====================================================
 
 async function removerCorrida(uid) {
+
+    if (decisaoEmAndamento) return;
 
     const confirmar =
         confirm(
@@ -490,6 +560,7 @@ async function removerCorrida(uid) {
 
     try {
 
+        bloquearPainel();
         const url =
             `${ENDPOINT_REMOVER}?uid=${encodeURIComponent(uid)}`;
 
@@ -541,7 +612,7 @@ async function removerCorrida(uid) {
         );
 
 
-        await listarCorridas();
+        await aguardarAtualizacao();
 
     } catch (error) {
 
@@ -551,6 +622,8 @@ async function removerCorrida(uid) {
             error.message,
             "erro"
         );
+    } finally {
+        desbloquearPainel();
     }
 }
 

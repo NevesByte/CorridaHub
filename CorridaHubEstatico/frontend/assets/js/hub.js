@@ -1,10 +1,11 @@
-const API_URL = "https://newton-demanding-quantum-super.trycloudflare.com/api/buscar-corridas";
+const API_URL = "http://98.89.169.30/api/painel";
 
 let paginaAtual = 1;
 const tamanhoPagina = 10;
 
 let totalPaginas = 0;
 let corridasAtuais = [];
+let proximoIdCard = 0;
 
 
 /*
@@ -13,15 +14,23 @@ let corridasAtuais = [];
 |--------------------------------------------------------------------------
 */
 
-const resultados = document.getElementById("resultados");
-const paginacao = document.getElementById("paginacao");
+const resultados =
+    document.getElementById("resultados");
 
-const btnAnterior = document.getElementById("btnAnterior");
-const btnProxima = document.getElementById("btnProxima");
+const paginacao =
+    document.getElementById("paginacao");
 
-const paginaAtualElement = document.getElementById("paginaAtual");
+const btnAnterior =
+    document.getElementById("btnAnterior");
 
-const formBusca = document.getElementById("formBusca");
+const btnProxima =
+    document.getElementById("btnProxima");
+
+const paginaAtualElement =
+    document.getElementById("paginaAtual");
+
+const formBusca =
+    document.getElementById("formBusca");
 
 
 /*
@@ -34,49 +43,76 @@ async function carregarCorridas(pagina = 1) {
 
     mostrarLoading();
 
+    if (window.location.protocol === "file:") {
+        mostrarErro(
+            "A página foi aberta diretamente como arquivo (file://). O navegador bloqueia chamadas à API nesse modo. Abra o Hub pelo endereço HTTP/HTTPS servido pelo Nginx, que encaminha /api/painel para o backend.",
+            false
+        );
+        return;
+    }
+
     try {
 
-        const url = `${API_URL}?page=${pagina}&pageSize=${tamanhoPagina}`;
+        const url =
+            `${API_URL}/corridas?page=${pagina}&pageSize=${tamanhoPagina}`;
 
-        const response = await fetch(url, {
-            method: "GET",
-            headers: {
-                "Accept": "application/json"
-            }
-        });
+
+        const response =
+            await fetch(url, {
+                method: "GET",
+                headers: {
+                    "Accept": "application/json"
+                }
+            });
+
 
         if (!response.ok) {
 
-            let mensagem = "Não foi possível carregar as corridas.";
+            let mensagem =
+                "Não foi possível carregar as corridas.";
+
 
             try {
 
-                const erro = await response.json();
+                const erro =
+                    await response.json();
+
 
                 if (erro.erro) {
-                    mensagem = erro.erro;
+
+                    mensagem =
+                        erro.erro;
+
                 }
 
             } catch {
+
                 // Resposta não era JSON.
+
             }
 
+
             throw new Error(mensagem);
+
         }
 
 
-        const dados = await response.json();
+        const dados =
+            await response.json();
 
 
         /*
         |--------------------------------------------------------------------------
-        | PAGINAÇÃO DA API
+        | PAGINAÇÃO
         |--------------------------------------------------------------------------
         */
 
-        paginaAtual = Number(dados.pagina) || 1;
+        paginaAtual =
+            Number(dados.pagina) || pagina;
 
-        totalPaginas = Number(dados.totalPaginas) || 0;
+
+        totalPaginas =
+            Number(dados.totalPaginas) || 0;
 
 
         /*
@@ -85,9 +121,10 @@ async function carregarCorridas(pagina = 1) {
         |--------------------------------------------------------------------------
         */
 
-        corridasAtuais = Array.isArray(dados.itens)
-            ? dados.itens
-            : [];
+        corridasAtuais =
+            Array.isArray(dados.itens)
+                ? dados.itens
+                : [];
 
 
         /*
@@ -96,7 +133,10 @@ async function carregarCorridas(pagina = 1) {
         |--------------------------------------------------------------------------
         */
 
-        renderizarCorridas(corridasAtuais);
+        renderizarCorridas(
+            corridasAtuais
+        );
+
 
         atualizarPaginacao();
 
@@ -108,10 +148,12 @@ async function carregarCorridas(pagina = 1) {
             erro
         );
 
-        mostrarErro(
-            erro.message ||
-            "Erro ao carregar as corridas."
-        );
+
+        const mensagem = erro instanceof TypeError
+            ? "Não foi possível conectar à API do painel. Confira se o site está aberto via HTTP/HTTPS e se o Nginx está encaminhando /api/painel para o backend."
+            : erro.message || "Erro ao carregar as corridas.";
+
+        mostrarErro(mensagem);
 
     }
 
@@ -129,25 +171,38 @@ function renderizarCorridas(corridas) {
     resultados.innerHTML = "";
 
 
-    if (!Array.isArray(corridas) || corridas.length === 0) {
+    if (
+        !Array.isArray(corridas) ||
+        corridas.length === 0
+    ) {
 
         resultados.innerHTML = `
+
             <div class="sem-resultados">
-                <h3>Nenhuma corrida encontrada</h3>
+
+                <h3>
+                    Nenhuma corrida encontrada
+                </h3>
 
                 <p>
-                    Não existem corridas disponíveis para os critérios informados.
+                    Não existem corridas disponíveis
+                    para os critérios informados.
                 </p>
+
             </div>
+
         `;
 
         return;
+
     }
 
 
     corridas.forEach(corrida => {
 
-        const card = criarCardCorrida(corrida);
+        const card =
+            criarCardCorrida(corrida);
+
 
         resultados.appendChild(card);
 
@@ -164,9 +219,12 @@ function renderizarCorridas(corridas) {
 
 function criarCardCorrida(corrida) {
 
-    const card = document.createElement("article");
+    const card =
+        document.createElement("article");
 
-    card.className = "card-corrida";
+
+    card.className =
+        "card-corrida";
 
 
     /*
@@ -175,36 +233,21 @@ function criarCardCorrida(corrida) {
     |--------------------------------------------------------------------------
     */
 
-    let imagemHtml = "";
-
-
-    if (corrida.imagemUrl) {
-
-        imagemHtml = `
-            <div class="card-corrida-imagem">
-
+    const imagemHtml = corrida.imagemUrl
+        ? `
+            <button type="button" class="card-corrida-imagem ampliar-imagem" aria-label="Ampliar imagem da corrida">
                 <img
                     src="${escapeHtml(corrida.imagemUrl)}"
                     alt="Imagem da corrida ${escapeHtml(corrida.nomeEvento || "")}"
                     loading="lazy"
-                    onerror="
-                        this.parentElement.innerHTML =
-                        '<div class=&quot;imagem-indisponivel&quot;>Imagem indisponível</div>';
-                    "
                 >
-
-            </div>
-        `;
-
-    } else {
-
-        imagemHtml = `
+            </button>
+        `
+        : `
             <div class="card-corrida-imagem imagem-sem-foto">
-                <span>Sem imagem</span>
+                <span>Imagem da corrida não disponível</span>
             </div>
         `;
-
-    }
 
 
     /*
@@ -213,9 +256,12 @@ function criarCardCorrida(corrida) {
     |--------------------------------------------------------------------------
     */
 
-    const dataEvento = formatarData(
-        corrida.dataEvento
-    );
+    const dataEvento =
+        formatarData(
+            corrida.dataEvento
+        );
+
+    const detalhesId = `detalhes-corrida-${++proximoIdCard}`;
 
 
     /*
@@ -232,89 +278,105 @@ function criarCardCorrida(corrida) {
 
             <div class="card-corrida-header">
 
-                <h3>
-                    ${escapeHtml(
-                        corrida.nomeEvento ||
-                        "Evento sem nome"
-                    )}
-                </h3>
-
-                <span class="status-corrida">
-                    ${formatarStatus(
-                        corrida.statusAprovacao
-                    )}
+                <span class="status-corrida ${classeStatus(corrida.statusAprovacao)}">
+                    ${escapeHtml(formatarStatus(corrida.statusAprovacao))}
                 </span>
-
             </div>
 
+            <h3 class="card-corrida-titulo">
+                ${escapeHtml(corrida.nomeEvento || "Evento sem nome")}
+            </h3>
 
-            <div class="card-corrida-info">
+            <p class="card-corrida-resumo">
+                <span>${escapeHtml(dataEvento)}</span>
+                <span>${escapeHtml(corrida.regiaoItapetininga || "Local não informado")}</span>
+            </p>
 
-                <p>
-                    <strong>Organizador:</strong>
-                    ${escapeHtml(
-                        corrida.nomeAnunciante ||
-                        "Não informado"
-                    )}
-                </p>
+            <button
+                class="btn-detalhes-corrida"
+                type="button"
+                aria-haspopup="dialog"
+            >
+                Ver informações
+            </button>
 
+            <div class="card-corrida-info" id="${detalhesId}" hidden>
 
-                <p>
-                    <strong>Região:</strong>
-                    ${escapeHtml(
-                        corrida.regiaoItapetininga ||
-                        "Não informada"
-                    )}
-                </p>
+                <div class="card-corrida-detalhe">
+                    <span>Data</span>
+                    <strong>${escapeHtml(dataEvento)}</strong>
+                </div>
 
+                <div class="card-corrida-detalhe">
+                    <span>Local</span>
+                    <strong>${escapeHtml(corrida.regiaoItapetininga || "Não informada")}</strong>
+                </div>
 
-                <p>
-                    <strong>Data:</strong>
-                    ${dataEvento}
-                </p>
+                <div class="card-corrida-detalhe">
+                    <span>Organizador</span>
+                    <strong>${escapeHtml(corrida.nomeAnunciante || "Não informado")}</strong>
+                </div>
 
+                <div class="card-corrida-detalhe">
+                    <span>Modalidade</span>
+                    <strong>${escapeHtml(formatarEnum(corrida.tipoCorrida))}</strong>
+                </div>
 
-                <p>
-                    <strong>Tipo:</strong>
-                    ${formatarEnum(
-                        corrida.tipoCorrida
-                    )}
-                </p>
+                <div class="card-corrida-detalhe">
+                    <span>Categoria</span>
+                    <strong>${escapeHtml(formatarEnum(corrida.categoriaCorredores))}</strong>
+                </div>
 
+                <div class="card-corrida-detalhe">
+                    <span>Premiação</span>
+                    <strong>${escapeHtml(formatarEnum(corrida.premiacao))}</strong>
+                </div>
 
-                <p>
-                    <strong>Categoria:</strong>
-                    ${formatarEnum(
-                        corrida.categoriaCorredores
-                    )}
-                </p>
-
-
-                <p>
-                    <strong>Premiação:</strong>
-                    ${formatarEnum(
-                        corrida.premiacao
-                    )}
-                </p>
-
-            </div>
-
-
-            <div class="card-corrida-footer">
-
-                <span>
-                    ${formatarAssinatura(
-                        corrida.assinatura
-                    )}
-                </span>
-
+                ${corrida.assinatura
+                    ? `<div class="card-corrida-detalhe"><span>Origem</span><strong>${escapeHtml(formatarAssinatura(corrida.assinatura))}</strong></div>`
+                    : ""}
             </div>
 
         </div>
+
     `;
+
+    const botaoDetalhes = card.querySelector(".btn-detalhes-corrida");
+    const detalhes = card.querySelector(".card-corrida-info");
+    botaoDetalhes.addEventListener("click", () => {
+        const conteudo = detalhes.cloneNode(true);
+        conteudo.removeAttribute("id");
+        conteudo.hidden = false;
+        for (const [rotulo, valor] of [["E-mail de contato", corrida.emailContato], ["Telefone", corrida.telefone]]) {
+            const item = document.createElement("div");
+            item.className = "card-corrida-detalhe";
+            const label = document.createElement("span");
+            label.textContent = rotulo;
+            const texto = document.createElement("strong");
+            texto.textContent = valor || "Não informado";
+            item.append(label, texto);
+            conteudo.append(item);
+        }
+        abrirCaixaCorrida(corrida.nomeEvento || "Informações da corrida", conteudo);
+    });
+
+    const imagem = card.querySelector(".card-corrida-imagem img");
+    card.querySelector(".ampliar-imagem")?.addEventListener("click", () => {
+        if (imagem?.isConnected) ampliarImagemCorrida(imagem, corrida.nomeEvento || "Imagem da corrida");
+    });
+    imagem?.addEventListener("error", () => {
+        const areaImagem = imagem.parentElement;
+        areaImagem.classList.add("imagem-sem-foto");
+        areaImagem.replaceChildren(
+            Object.assign(document.createElement("span"), {
+                textContent: "Imagem da corrida indisponível"
+            })
+        );
+    }, { once: true });
 
 
     return card;
+
 }
 
 
@@ -326,15 +388,20 @@ function criarCardCorrida(corrida) {
 
 function atualizarPaginacao() {
 
-    if (totalPaginas <= 1) {
+    if (
+        totalPaginas <= 1
+    ) {
 
-        paginacao.style.display = "none";
+        paginacao.style.display =
+            "none";
 
         return;
+
     }
 
 
-    paginacao.style.display = "flex";
+    paginacao.style.display =
+        "flex";
 
 
     paginaAtualElement.textContent =
@@ -383,7 +450,9 @@ btnProxima.addEventListener(
     "click",
     () => {
 
-        if (paginaAtual < totalPaginas) {
+        if (
+            paginaAtual < totalPaginas
+        ) {
 
             carregarCorridas(
                 paginaAtual + 1
@@ -413,284 +482,302 @@ formBusca.addEventListener(
 );
 
 
+/*
+|--------------------------------------------------------------------------
+| APLICAR FILTROS
+|--------------------------------------------------------------------------
+*/
+
 function aplicarFiltros() {
 
     const nome =
-        document.getElementById("nome")
+        document
+            .getElementById("nome")
             .value
             .trim()
             .toLowerCase();
 
 
     const regiao =
-        document.getElementById("regiao")
+        document
+            .getElementById("regiao")
             .value
             .trim()
             .toLowerCase();
 
 
     const data =
-        document.getElementById("data")
+        document
+            .getElementById("data")
             .value;
 
 
     const tipo =
-        document.getElementById("tipo")
+        document
+            .getElementById("tipo")
             .value
             .toLowerCase();
 
 
     const categoria =
-        document.getElementById("categoria")
+        document
+            .getElementById("categoria")
             .value
             .toLowerCase();
 
 
     const premiacao =
-        document.getElementById("premiacao")
+        document
+            .getElementById("premiacao")
             .value
             .toLowerCase();
 
 
     const status =
-        document.getElementById("status")
+        document
+            .getElementById("status")
             .value
             .toLowerCase();
 
 
     const organizadores =
-        document.getElementById("organizadores")
+        document
+            .getElementById("organizadores")
             .value
             .trim()
             .toLowerCase();
 
 
-    const distancia =
-        document.getElementById("distancia")
-            .value
-            .trim()
-            .toLowerCase();
+    const filtradas =
+        corridasAtuais.filter(
+            corrida => {
 
 
-    const filtradas = corridasAtuais.filter(corrida => {
+                /*
+                |--------------------------------------------------------------------------
+                | NOME
+                |--------------------------------------------------------------------------
+                */
+
+                if (
+                    nome &&
+                    !String(
+                        corrida.nomeEvento || ""
+                    )
+                        .toLowerCase()
+                        .includes(nome)
+                ) {
+
+                    return false;
+
+                }
 
 
-        /*
-        |--------------------------------------------------------------------------
-        | NOME
-        |--------------------------------------------------------------------------
-        */
+                /*
+                |--------------------------------------------------------------------------
+                | REGIÃO
+                |--------------------------------------------------------------------------
+                */
 
-        if (
-            nome &&
-            !String(corrida.nomeEvento || "")
-                .toLowerCase()
-                .includes(nome)
-        ) {
+                if (
+                    regiao &&
+                    !String(
+                        corrida.regiaoItapetininga || ""
+                    )
+                        .toLowerCase()
+                        .includes(regiao)
+                ) {
 
-            return false;
+                    return false;
 
-        }
-
-
-        /*
-        |--------------------------------------------------------------------------
-        | REGIÃO
-        |--------------------------------------------------------------------------
-        */
-
-        if (
-            regiao &&
-            !String(corrida.regiaoItapetininga || "")
-                .toLowerCase()
-                .includes(regiao)
-        ) {
-
-            return false;
-
-        }
+                }
 
 
-        /*
-        |--------------------------------------------------------------------------
-        | DATA
-        |--------------------------------------------------------------------------
-        */
+                /*
+                |--------------------------------------------------------------------------
+                | DATA
+                |--------------------------------------------------------------------------
+                */
 
-        if (data) {
+                if (data) {
 
-            const dataCorrida =
-                corrida.dataEvento
-                    ? String(corrida.dataEvento).substring(0, 10)
-                    : "";
+                    const dataCorrida =
+                        corrida.dataEvento
+                            ? String(
+                                corrida.dataEvento
+                            ).substring(0, 10)
+                            : "";
 
-            if (dataCorrida !== data) {
 
-                return false;
+                    if (
+                        dataCorrida !== data
+                    ) {
+
+                        return false;
+
+                    }
+
+                }
+
+
+                /*
+                |--------------------------------------------------------------------------
+                | TIPO
+                |--------------------------------------------------------------------------
+                */
+
+                if (
+                    tipo &&
+                    normalizarValor(
+                        corrida.tipoCorrida
+                    ) !==
+                    normalizarValor(tipo)
+                ) {
+
+                    return false;
+
+                }
+
+
+                /*
+                |--------------------------------------------------------------------------
+                | CATEGORIA
+                |--------------------------------------------------------------------------
+                */
+
+                if (
+                    categoria &&
+                    normalizarValor(
+                        corrida.categoriaCorredores
+                    ) !==
+                    normalizarValor(categoria)
+                ) {
+
+                    return false;
+
+                }
+
+
+                /*
+                |--------------------------------------------------------------------------
+                | PREMIAÇÃO
+                |--------------------------------------------------------------------------
+                */
+
+                if (
+                    premiacao &&
+                    normalizarValor(
+                        corrida.premiacao
+                    ) !==
+                    normalizarValor(premiacao)
+                ) {
+
+                    return false;
+
+                }
+
+
+                /*
+                |--------------------------------------------------------------------------
+                | STATUS
+                |--------------------------------------------------------------------------
+                */
+
+                if (status) {
+
+                    const dataEvento =
+                        corrida.dataEvento
+                            ? new Date(
+                                corrida.dataEvento
+                            )
+                            : null;
+
+
+                    if (!dataEvento) {
+
+                        return false;
+
+                    }
+
+
+                    const hoje =
+                        new Date();
+
+
+                    hoje.setHours(
+                        0,
+                        0,
+                        0,
+                        0
+                    );
+
+
+                    dataEvento.setHours(
+                        0,
+                        0,
+                        0,
+                        0
+                    );
+
+
+                    if (
+                        status === "realizada" &&
+                        dataEvento >= hoje
+                    ) {
+
+                        return false;
+
+                    }
+
+
+                    if (
+                        status === "agendada" &&
+                        dataEvento < hoje
+                    ) {
+
+                        return false;
+
+                    }
+
+                }
+
+
+                /*
+                |--------------------------------------------------------------------------
+                | ORGANIZADOR
+                |--------------------------------------------------------------------------
+                */
+
+                if (
+                    organizadores &&
+                    !String(
+                        corrida.nomeAnunciante || ""
+                    )
+                        .toLowerCase()
+                        .includes(organizadores)
+                ) {
+
+                    return false;
+
+                }
+
+
+                return true;
 
             }
-
-        }
-
-
-        /*
-        |--------------------------------------------------------------------------
-        | TIPO
-        |--------------------------------------------------------------------------
-        */
-
-        if (
-            tipo &&
-            normalizarValor(corrida.tipoCorrida) !==
-            normalizarValor(tipo)
-        ) {
-
-            return false;
-
-        }
+        );
 
 
-        /*
-        |--------------------------------------------------------------------------
-        | CATEGORIA
-        |--------------------------------------------------------------------------
-        */
-
-        if (
-            categoria &&
-            normalizarValor(corrida.categoriaCorredores) !==
-            normalizarValor(categoria)
-        ) {
-
-            return false;
-
-        }
-
-
-        /*
-        |--------------------------------------------------------------------------
-        | PREMIAÇÃO
-        |--------------------------------------------------------------------------
-        */
-
-        if (
-            premiacao &&
-            normalizarValor(corrida.premiacao) !==
-            normalizarValor(premiacao)
-        ) {
-
-            return false;
-
-        }
-
-
-        /*
-        |--------------------------------------------------------------------------
-        | STATUS
-        |--------------------------------------------------------------------------
-        */
-
-        if (status) {
-
-            const dataEvento =
-                corrida.dataEvento
-                    ? new Date(corrida.dataEvento)
-                    : null;
-
-
-            if (!dataEvento) {
-
-                return false;
-
-            }
-
-
-            const hoje = new Date();
-
-            hoje.setHours(
-                0,
-                0,
-                0,
-                0
-            );
-
-
-            dataEvento.setHours(
-                0,
-                0,
-                0,
-                0
-            );
-
-
-            if (
-                status === "realizada" &&
-                dataEvento >= hoje
-            ) {
-
-                return false;
-
-            }
-
-
-            if (
-                status === "agendada" &&
-                dataEvento < hoje
-            ) {
-
-                return false;
-
-            }
-
-        }
-
-
-        /*
-        |--------------------------------------------------------------------------
-        | ORGANIZADOR
-        |--------------------------------------------------------------------------
-        */
-
-        if (
-            organizadores &&
-            !String(corrida.nomeAnunciante || "")
-                .toLowerCase()
-                .includes(organizadores)
-        ) {
-
-            return false;
-
-        }
-
-
-        /*
-        |--------------------------------------------------------------------------
-        | DISTÂNCIA
-        |--------------------------------------------------------------------------
-        */
-
-        if (distancia) {
-
-            console.warn(
-                "Filtro de distância indisponível: a API não retorna distância."
-            );
-
-        }
-
-
-        return true;
-
-    });
-
-
-    renderizarCorridas(filtradas);
+    renderizarCorridas(
+        filtradas
+    );
 
 }
 
 
 /*
 |--------------------------------------------------------------------------
-| FORMATAÇÕES
+| FORMATAR DATA
 |--------------------------------------------------------------------------
 */
 
@@ -703,11 +790,22 @@ function formatarData(data) {
     }
 
 
-    const dataObj = new Date(data);
+    const dataISO =
+        /^(\d{4})-(\d{2})-(\d{2})/.exec(String(data));
+
+    const dataObj = dataISO
+        ? new Date(
+            Number(dataISO[1]),
+            Number(dataISO[2]) - 1,
+            Number(dataISO[3])
+        )
+        : new Date(data);
 
 
     if (
-        Number.isNaN(dataObj.getTime())
+        Number.isNaN(
+            dataObj.getTime()
+        )
     ) {
 
         return "Data inválida";
@@ -729,7 +827,7 @@ function formatarData(data) {
 
 /*
 |--------------------------------------------------------------------------
-| ENUM
+| FORMATAR ENUM
 |--------------------------------------------------------------------------
 */
 
@@ -745,6 +843,25 @@ function formatarEnum(valor) {
 
     }
 
+
+    const rotulos = {
+        CorridaDeRua: "Corrida de rua",
+        CorridaDeCampo: "Corrida de campo",
+        CorridaDeTrilha: "Corrida de trilha",
+        CorridaDeEscada: "Corrida de escada",
+        CorridaCrossCountry: "Corrida cross country",
+        Vovos: "Vovôs",
+        Criancas: "Crianças",
+        ComPremiacao: "Com premiação",
+        SemPremiacao: "Sem premiação",
+        PremiacaoDinheiro: "Premiação em dinheiro",
+        Administracao: "Administração",
+        PainelCorridaHub: "Painel Corrida Hub"
+    };
+
+    if (Object.prototype.hasOwnProperty.call(rotulos, valor)) {
+        return rotulos[valor];
+    }
 
     return String(valor)
 
@@ -765,7 +882,8 @@ function formatarEnum(valor) {
 
         .replace(
             /\b\w/g,
-            letra => letra.toUpperCase()
+            letra =>
+                letra.toUpperCase()
         );
 
 }
@@ -773,9 +891,17 @@ function formatarEnum(valor) {
 
 /*
 |--------------------------------------------------------------------------
-| STATUS APROVAÇÃO
+| STATUS
 |--------------------------------------------------------------------------
 */
+
+function classeStatus(status) {
+    const valor = normalizarValor(status);
+    return ["pendente", "aprovado", "rejeitado"].includes(valor)
+        ? `status-${valor}`
+        : "";
+}
+
 
 function formatarStatus(status) {
 
@@ -791,7 +917,8 @@ function formatarStatus(status) {
 
 
     const valor =
-        String(status).toLowerCase();
+        String(status)
+            .toLowerCase();
 
 
     switch (valor) {
@@ -819,7 +946,9 @@ function formatarStatus(status) {
 |--------------------------------------------------------------------------
 */
 
-function formatarAssinatura(assinatura) {
+function formatarAssinatura(
+    assinatura
+) {
 
     if (
         assinatura === null ||
@@ -841,7 +970,7 @@ function formatarAssinatura(assinatura) {
 
 /*
 |--------------------------------------------------------------------------
-| NORMALIZAÇÃO
+| NORMALIZAR VALOR
 |--------------------------------------------------------------------------
 */
 
@@ -933,9 +1062,13 @@ function escapeHtml(valor) {
 function mostrarLoading() {
 
     resultados.innerHTML = `
+
         <div class="estado-carregamento">
+
             Carregando corridas...
+
         </div>
+
     `;
 
 }
@@ -961,12 +1094,12 @@ function mostrarErro(mensagem) {
                 ${escapeHtml(mensagem)}
             </p>
 
-            <button
+            ${window.location.protocol === "file:" ? "" : `<button
                 type="button"
                 onclick="carregarCorridas(paginaAtual)"
             >
                 Tentar novamente
-            </button>
+            </button>`}
 
         </div>
 
@@ -984,6 +1117,23 @@ function mostrarErro(mensagem) {
 document.addEventListener(
     "DOMContentLoaded",
     () => {
+
+        const endereco = new URL(window.location.href);
+        if (endereco.searchParams.get("envio") === "sucesso") {
+            const aviso = document.createElement("p");
+            aviso.setAttribute("role", "status");
+            aviso.tabIndex = -1;
+            aviso.textContent = "Sua corrida foi enviada para análise com sucesso!";
+            Object.assign(aviso.style, {
+                padding: "20px", margin: "20px auto", maxWidth: "1100px",
+                borderRadius: "14px", border: "1px solid #78bc91",
+                background: "#eaf8ef", color: "#174a2a", fontWeight: "600"
+            });
+            document.querySelector("main").prepend(aviso);
+            aviso.focus();
+            endereco.searchParams.delete("envio");
+            window.history.replaceState(null, "", endereco.href);
+        }
 
         carregarCorridas(1);
 

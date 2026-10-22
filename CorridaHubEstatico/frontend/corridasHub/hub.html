@@ -12,8 +12,8 @@
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=menu"
   >
 
-  <link rel="stylesheet" href="../assets/css/main.css">
-  <link rel="stylesheet" href="../assets/css/hub.css">
+  <link rel="stylesheet" href="../assets/css/main.css?v=20261010-black">
+  <link rel="stylesheet" href="../assets/css/hub.css?v=20261021-modal">
 </head>
 
 <body>
@@ -21,15 +21,29 @@
 <header>
 
   <a href="../index.html" class="header-brand">
-    <img src="../img/CORRIDA.png" alt="Logo do Corrida Hub">
+
+    <img
+      src="../img/CORRIDA.png"
+      alt="Logo do Corrida Hub"
+    >
+
     <h1>Corrida Hub</h1>
+
   </a>
 
   <nav>
+
     <ul>
+
       <li>
         <a href="../corridasHub/hub.html">
           Hub de Corridas
+        </a>
+      </li>
+
+      <li>
+        <a href="../publiqueCorridas/publicarCorrida.html">
+          Publicar Corrida
         </a>
       </li>
 
@@ -62,7 +76,9 @@
           História
         </a>
       </li>
+
     </ul>
+
   </nav>
 
   <span class="material-symbols-outlined menu-toggle">
@@ -80,17 +96,23 @@
 
     <div class="busca-corridas">
 
-      <!-- ========================= -->
+
+      <!-- ============================= -->
       <!-- SIDEBAR DE FILTROS -->
-      <!-- ========================= -->
+      <!-- ============================= -->
 
       <div class="sidebar-filtros">
 
-        <form class="form" id="formBusca">
+        <form
+          class="form"
+          id="formBusca"
+        >
 
           <h3>Filtros</h3>
 
+
           <div class="campo">
+
             <label for="nome">
               Nome do evento
             </label>
@@ -100,23 +122,12 @@
               id="nome"
               placeholder="Digite o nome..."
             >
+
           </div>
 
 
           <div class="campo">
-            <label for="distancia">
-              Distância (KM)
-            </label>
 
-            <input
-              type="text"
-              id="distancia"
-              placeholder="Digite a distância..."
-            >
-          </div>
-
-
-          <div class="campo">
             <label for="regiao">
               Região
             </label>
@@ -126,10 +137,12 @@
               id="regiao"
               placeholder="Ex: Centro"
             >
+
           </div>
 
 
           <div class="campo">
+
             <label for="data">
               Data
             </label>
@@ -138,6 +151,7 @@
               type="date"
               id="data"
             >
+
           </div>
 
 
@@ -153,23 +167,23 @@
                 Selecione
               </option>
 
-              <option value="rua">
+              <option value="CorridaDeRua">
                 Corridas de rua
               </option>
 
-              <option value="campo">
+              <option value="CorridaDeCampo">
                 Corridas de campo
               </option>
 
-              <option value="trilha">
+              <option value="CorridaDeTrilha">
                 Corridas de trilha
               </option>
 
-              <option value="escada">
+              <option value="CorridaDeEscada">
                 Corridas de escada
               </option>
 
-              <option value="cross">
+              <option value="CorridaCrossCountry">
                 Corridas cross country
               </option>
 
@@ -198,11 +212,15 @@
                 Feminino
               </option>
 
+              <option value="vovos">
+                Vovôs
+              </option>
+
               <option value="jovens">
                 Jovens
               </option>
 
-              <option value="criancas">
+              <option value="Criancas">
                 Crianças
               </option>
 
@@ -235,49 +253,16 @@
                 Selecione
               </option>
 
-              <option value="sem">
+              <option value="SemPremiacao">
                 Sem premiação
               </option>
 
-              <option value="com">
+              <option value="ComPremiacao">
                 Com premiação
               </option>
 
-              <option value="dinheiro">
+              <option value="PremiacaoDinheiro">
                 Premiação em dinheiro
-              </option>
-
-            </select>
-
-          </div>
-
-
-          <div class="campo">
-
-            <label for="programa">
-              Programa
-            </label>
-
-            <select id="programa">
-
-              <option value="">
-                Selecione
-              </option>
-
-              <option value="correr-caminhar">
-                Correr e Caminhar com Saúde
-              </option>
-
-              <option value="60+">
-                60+
-              </option>
-
-              <option value="kids">
-                Kids
-              </option>
-
-              <option value="parcerias">
-                Parcerias Culturais
               </option>
 
             </select>
@@ -341,9 +326,9 @@
       </div>
 
 
-      <!-- ========================= -->
+      <!-- ============================= -->
       <!-- RESULTADOS -->
-      <!-- ========================= -->
+      <!-- ============================= -->
 
       <div class="container-cards">
 
@@ -351,22 +336,17 @@
           class="resultados"
           id="resultados"
         >
-
-          <div
-            class="estado-carregamento"
-            id="loading"
-          >
-            Carregando corridas...
-          </div>
-
+          <!-- Resultados serão inseridos pelo JavaScript -->
         </div>
 
 
+        <!-- ============================= -->
         <!-- PAGINAÇÃO -->
+        <!-- ============================= -->
 
         <div
-          class="paginacao"
           id="paginacao"
+          class="paginacao"
           style="display: none;"
         >
 
@@ -399,10 +379,6 @@
 </main>
 
 
-<!-- ========================= -->
-<!-- FOOTER -->
-<!-- ========================= -->
-
 <footer>
 
   <div>
@@ -429,6 +405,12 @@
       <li>
         <a href="../corridasHub/hub.html">
           Hub de Corridas
+        </a>
+      </li>
+
+      <li>
+        <a href="../publiqueCorridas/publicarCorrida.html">
+          Publicar Corrida
         </a>
       </li>
 
@@ -475,6 +457,7 @@
 
     <div class="footer-team-cards">
 
+
       <div class="footer-team-card">
 
         <img
@@ -494,7 +477,6 @@
             <a
               href="https://www.linkedin.com/in/victor-neves-039504348/"
               target="_blank"
-              rel="noopener noreferrer"
             >
               linkedin
             </a>
@@ -525,7 +507,6 @@
             <a
               href="https://www.linkedin.com/in/thomas-paimm?utm_source=share_via&utm_content=profile&utm_medium=member_android"
               target="_blank"
-              rel="noopener noreferrer"
             >
               linkedin
             </a>
@@ -554,7 +535,6 @@
     <a
       href="https://wa.me/15991353632"
       target="_blank"
-      rel="noopener noreferrer"
     >
       WhatsApp
     </a>
@@ -562,7 +542,6 @@
     <a
       href="https://www.instagram.com/corrida_hub?igsh=MTl2ajUzd2k2YnhoYQ=="
       target="_blank"
-      rel="noopener noreferrer"
     >
       Instagram
     </a>
@@ -572,9 +551,7 @@
 </footer>
 
 
-<!-- ========================= -->
-<!-- VLIBRAS -->
-<!-- ========================= -->
+<!-- VLibras -->
 
 <div
   vw
@@ -595,20 +572,19 @@
 </div>
 
 
-<!-- ========================= -->
-<!-- SCRIPTS -->
-<!-- ========================= -->
-
 <script src="../assets/js/menu.js"></script>
 
-<script src="../assets/js/hub.js"></script>
+<script src="../assets/js/caixa-corrida.js?v=20261021"></script>
+<script src="../assets/js/hub.js?v=20261021-publicacao"></script>
 
 <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
 
 <script>
+
   new window.VLibras.Widget(
-    'https://vlibras.gov.br/app'
+    "https://vlibras.gov.br/app"
   );
+
 </script>
 
 </body>

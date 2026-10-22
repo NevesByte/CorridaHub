@@ -20,14 +20,28 @@ public class RequisicaoCorridaService
 
     public async Task RequisicaoCorrida(RequisicaoCorridaDto dto)
     {
+        if (!Guid.TryParse(dto.id, out _))
+            throw new ArgumentException("O ID original da corrida deve ser um UUID válido.");
+
         var requisicao = _mapper.Map<RequisicaoCorridaEntity>(dto);
         requisicao.statusAprovacao = StatusAprovacao.Pendente;
         requisicao.assinatura = AssinaturaSistema.PainelCorridaHub;
         await _corridaRequisicaoRepository.AdicionarCorrida(requisicao);
     }
 
-    public Task<List<RequisicaoCorridaEntity>> ListarCorridas(int pagina, int tamanhoPagina) =>
-        _corridaRequisicaoRepository.ListarCorridas(pagina, tamanhoPagina);
+    public async Task<List<RequisicaoCorridaResponseDto>> ListarCorridas(int pagina, int tamanhoPagina)
+    {
+        var corridas = await _corridaRequisicaoRepository.ListarCorridas(pagina, tamanhoPagina);
+        var resposta = new List<RequisicaoCorridaResponseDto>();
+        foreach (var corrida in corridas)
+        {
+            var dto = _mapper.Map<RequisicaoCorridaResponseDto>(corrida);
+            if (!string.IsNullOrWhiteSpace(corrida.imagemKey))
+                dto.imagemUrl = await _s3Service.GerarUrlImagemAsync(corrida.imagemKey);
+            resposta.Add(dto);
+        }
+        return resposta;
+    }
 
     public Task<bool> RemoverCorridas(string uid) => ProcessarDecisao(
         uid, StatusAprovacao.Rejeitado, "Corrida não cadastrada",
@@ -37,31 +51,29 @@ public class RequisicaoCorridaService
         uid, StatusAprovacao.Aprovado, "Corrida cadastrada",
         "Sua corrida foi cadastrada. Consulte a corrida no Hub de Corridas!");
 
-    private async Task<bool> ProcessarDecisao(string uid, StatusAprovacao status,
+    private Task<bool> ProcessarDecisao(string uid, StatusAprovacao status,
         string assunto, string mensagem)
     {
-        var requisicao = await _corridaRequisicaoRepository.BuscarCorrida(uid);
-        if (requisicao is null) return false;
-
-        requisicao.statusAprovacao = status;
-        requisicao.assinatura = AssinaturaSistema.Administracao;
-
-        if (!string.IsNullOrWhiteSpace(requisicao.imagemKey))
+        return _corridaRequisicaoRepository.ProcessarDecisao(uid, status, async requisicao =>
         {
-            if (status == StatusAprovacao.Aprovado)
-            {
-                await _s3Service.AtualizarStatusAsync(requisicao.imagemKey, StatusImagemS3.Aprovado);
-            }
-            else if (status == StatusAprovacao.Rejeitado)
-            {
-                await _s3Service.ExcluirArquivoAsync(requisicao.imagemKey);
-            }
-        }
+            requisicao.statusAprovacao = status;
+            requisicao.assinatura = AssinaturaSistema.Administracao;
 
-        // Preserva o id recebido do portal para atualizar/remover a mesma corrida.
-        await _sqsService.SendMessageAsync(requisicao);
-        await _corridaRequisicaoRepository.RemoverCorridas(uid);
-        await _emailService.EnviarEmailAsync(requisicao.emailContato, assunto, mensagem);
-        return true;
+            if (!string.IsNullOrWhiteSpace(requisicao.imagemKey))
+            {
+                if (status == StatusAprovacao.Aprovado)
+                {
+                    await _s3Service.AtualizarStatusAsync(requisicao.imagemKey, StatusImagemS3.Aprovado);
+                }
+                else if (status == StatusAprovacao.Rejeitado)
+                {
+                    await _s3Service.ExcluirArquivoAsync(requisicao.imagemKey);
+                }
+            }
+
+            // Preserva o id recebido do portal para atualizar/remover a mesma corrida.
+            await _sqsService.SendMessageAsync(requisicao);
+            await _emailService.EnviarEmailAsync(requisicao.emailContato, assunto, mensagem);
+        });
     }
 }

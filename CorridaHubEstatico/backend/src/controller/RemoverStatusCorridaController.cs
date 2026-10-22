@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.RateLimiting;
 
 [ApiController]
-[Route("/api/remover-corrida")]
+[Route("/api/painel/corridas")]
 public class RemoverCorridaController : ControllerBase
 {
     private readonly RequisicaoCorridaService _requisicaoService;

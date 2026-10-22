@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.RateLimiting;
 
 [EnableRateLimiting("PorUsuario")]
 [ApiController]
-[Route("/api/solicitacao-corrida")]
+[Route("/api/painel/corridas")]
 public class RequisicaoCorridaController : ControllerBase
 {
     private readonly RequisicaoCorridaService _requisicaoService;

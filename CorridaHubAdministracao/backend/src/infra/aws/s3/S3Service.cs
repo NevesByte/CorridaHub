@@ -41,4 +41,13 @@ public class S3Service : IS3Service
             BucketName = _bucketName,
             Key = chaveObjeto
         }, cancellationToken);
+
+    public Task<string> GerarUrlImagemAsync(string chaveObjeto) =>
+        _s3.GetPreSignedURLAsync(new GetPreSignedUrlRequest
+        {
+            BucketName = _bucketName,
+            Key = chaveObjeto,
+            Expires = DateTime.UtcNow.AddMinutes(15),
+            Verb = HttpVerb.GET
+        });
 }

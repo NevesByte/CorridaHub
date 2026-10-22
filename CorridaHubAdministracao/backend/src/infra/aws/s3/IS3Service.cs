@@ -1,5 +1,6 @@
 public interface IS3Service
 {
+    Task<string> GerarUrlImagemAsync(string chaveObjeto);
     Task AtualizarStatusAsync(string chaveObjeto, StatusImagemS3 status,
         CancellationToken cancellationToken = default);
     Task ExcluirArquivoAsync(string chaveObjeto, CancellationToken cancellationToken = default);

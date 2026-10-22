@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.RateLimiting;
 
 [ApiController]
-[Route("/api/buscar-corridas")]
+[Route("/api/painel/corridas")]
 public class BuscarCorridasController : ControllerBase
 {
     private readonly RequisicaoCorridaService _requisicaoService;

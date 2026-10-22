@@ -20,10 +20,12 @@ public class RequisicaoCorridaController : ControllerBase
         try{
             await _requisicaoService.RequisicaoCorrida(dto);
             return Created();
+        }catch (ArgumentException e){
+            return BadRequest(new { erro = e.Message });
         }catch (Exception e){
             Console.WriteLine(e.Message);
         }
-        return StatusCode(404);
+        return Problem(statusCode: StatusCodes.Status500InternalServerError);
         
     }
 }

@@ -41,7 +41,7 @@ public class Function
 
                 url =
                     $"{Environment.GetEnvironmentVariable("PUBLIC_API_BASE_URL")}" +
-                    "/api/atualizar-corrida";
+                    "/api/painel/corridas";
             }
             else if (assinatura == "Administracao" && status == "Rejeitado")
             {
@@ -49,7 +49,7 @@ public class Function
 
                 url =
                     $"{Environment.GetEnvironmentVariable("PUBLIC_API_BASE_URL")}" +
-                    $"/api/remover-corrida?uid={Uri.EscapeDataString(id!)}";
+                    $"/api/painel/corridas?uid={Uri.EscapeDataString(id!)}";
             }
             else
             {

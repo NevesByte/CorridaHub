@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.RateLimiting;
 
 [ApiController]
-[Route("/api/atualizar-corrida")]
+[Route("/api/painel/corridas")]
 public class AtualizarCorridaController : ControllerBase
 {
     private readonly RequisicaoCorridaService _requisicaoService;

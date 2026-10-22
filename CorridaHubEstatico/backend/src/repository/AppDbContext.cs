@@ -7,6 +7,14 @@ public class AppDbContext : DbContext {
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<RequisicaoCorridaEntity>()
+            .Property(x => x.statusAprovacao)
+            .HasConversion<string>();
+
+        modelBuilder.Entity<RequisicaoCorridaEntity>()
+            .Property(x => x.assinatura)
+            .HasConversion<string>();
+
+        modelBuilder.Entity<RequisicaoCorridaEntity>()
             .Property(x => x.tipoCorrida)
             .HasConversion<string>();
         
